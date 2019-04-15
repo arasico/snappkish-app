@@ -1,6 +1,13 @@
 import React, {Component } from "react";
-import {  View , StyleSheet , ImageBackground , Text , TouchableOpacity } from "react-native";
+import {  View , StyleSheet , ImageBackground ,Image, Text , TouchableOpacity } from "react-native";
 import { Container, Left, Button, Body, Title, Right, Header , Icon} from 'native-base';
+import {
+    widthPercentageToDP as wp,
+    heightPercentageToDP as hp,
+    listenOrientationChange as loc,
+    removeOrientationListener as rol
+  } from 'react-native-responsive-screen';
+
 import Icons from '../../styles/icons'
 
 import colors from '../../styles/colors';
@@ -42,54 +49,18 @@ class Main extends Component{
     render(){
         return (
 
-            <View style={styles.backgroundImage} >
-
-
-                        <ImageBackground source={require('../../assets/img/dashboard-blue.png')} style={styles.dashboard} >
-                            <HeaderMain navigation={this.props.navigation} title="Falang"  />
-
-                            <View   style={styles.Header}>
-                               <View style={styles.avatarBox}>
-                                    <View style={styles.avatarContainer}>
-                                            <Icons.Ionicons name="md-person" size={50} style={styles.iconNav} />
-                                    </View>
-                               </View>
-                                <View style={styles.textContainer}>
-                                    <Text>Sara Daniewswl</Text>
-                                    <Text>0911 217 1414</Text>
-                                </View>
-                                
-                            </View>
-
-                        </ImageBackground>
-                        <Wallet onPress={this._callNotification.bind(this)} />
-                     
-                        <View style={styles.menuContainer}>
-                            <View style={styles.menuContainerPadding}>
-                                <TouchableOpacity style={styles.MenuButton} onPress={this.props.onPress }>
-                                </TouchableOpacity>
-
-                                <TouchableOpacity style={styles.MenuButton} onPress={this.props.onPress }>
-                                </TouchableOpacity>
-
-                            </View>
-
-                            <View style={styles.menuContainerPaddingTwo}>
-                                <TouchableOpacity style={styles.MenuButton} onPress={this.props.onPress }>
-                                </TouchableOpacity>
-
-                                <TouchableOpacity style={styles.MenuButton} onPress={this.props.onPress }>
-                                </TouchableOpacity>
-
-                            </View>
-                           
-                        </View>
-
+            <View style={styles.container} >
                       
+                   
 
+
+                   
+                    <View style={styles.cardUp}>
+                        <Image source={require('../../assets/img/dashboard-blue.png')} style={styles.backgroundImage}>
                         
-
-                    
+                        </Image>
+                    </View>
+                    <View style={styles.cardDwon}></View>
 
             </View>
         )
@@ -97,27 +68,57 @@ class Main extends Component{
 }
 
 const styles = StyleSheet.create({
-    backgroundImage: {
-        width: '100%',
-        height: '100%',
-        backgroundColor: '#F3F5F9',  
-        margin:0,
-        padding: 0
+
+
+    container:{
+        flex:1,
 
     },
-    dashboard: {
-        flex: 2,
+
+    cardUp:{
+        flex:2,
+        flexDirection:'column',
+        backgroundColor:'blue',
+          
+
+    },
+    cardDwon:{
+        flex:4,
+        flexDirection:'column',
+        backgroundColor:'red',
+
+    },
+
+
+
+
+
+
+
+    backgroundImage: { 
+        height: '100%',
         width: '100%',
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        right:0
+
+
+    },
+    dashboard: {    
+        // height: wp('67%'), 
+        backgroundColor:'blue',
+        width: '100%', height: '100%'
     },
     menuContainer:{
-        flex: 2,
-        backgroundColor: '#F3F5F9',  
-        marginTop: 40
+        // flex: 3,
+        // backgroundColor: 'red',  
+        width: wp('100%'), 
+        marginTop: wp('10%')
 
     },
     menuContainerPadding : { 
         flexDirection: 'row',  
-        elevation: 3, 
         width:'80%',
         borderRadius:5, 
         alignSelf: 'center' ,   
@@ -128,8 +129,7 @@ const styles = StyleSheet.create({
 
     },
     menuContainerPaddingTwo:{ 
-        flexDirection: 'row',  
-        elevation: 3, 
+        flexDirection: 'row',   
         width:'80%',
         borderRadius:5, 
         alignSelf: 'center' ,   
@@ -139,9 +139,9 @@ const styles = StyleSheet.create({
     },
 
     Header:{  
+        flex:1,
         justifyContent: 'center',
-        alignItems:'center',
-        paddingTop: 20
+        alignItems:'center', 
         
     },
     avatarBox:{
@@ -154,9 +154,7 @@ const styles = StyleSheet.create({
     },
     textContainer:{
         justifyContent: 'center',
-        alignItems:'center', 
-        position: 'absolute',
-        top:150,
+        alignItems:'center',  
         zIndex:4
     },
     avatarContainer:{
@@ -171,14 +169,14 @@ const styles = StyleSheet.create({
         
     },
     iconNav:{
-      paddingHorizontal:10,
+    //   paddingHorizontal:10,
 
     },
 
     MenuButton:{
         backgroundColor:'#F1F1F1',
-        width:150,
-        height:130,
+        width:wp('39%'),
+        height:wp('35%'),
         margin:5,
         borderRadius:5,
         elevation: 3,

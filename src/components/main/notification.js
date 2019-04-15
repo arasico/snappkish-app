@@ -1,5 +1,11 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet , Button, TouchableOpacity} from 'react-native';
+import {
+    widthPercentageToDP as wp,
+    heightPercentageToDP as hp,
+    listenOrientationChange as loc,
+    removeOrientationListener as rol
+  } from 'react-native-responsive-screen';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 //
 //
@@ -52,7 +58,7 @@ const styles = StyleSheet.create({
         borderRadius:5, 
         alignSelf: 'center' ,  
         position: 'absolute',
-        top:230,
+        top:wp('53%'),
         zIndex:3
 
     },
