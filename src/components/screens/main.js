@@ -46,7 +46,7 @@ class Main extends Component{
 
 
                         <ImageBackground source={require('../../assets/img/dashboard-blue.png')} style={styles.dashboard} >
-                            <HeaderMain navigation={this.props.navigation} title="Falang"  />
+                            <HeaderMain navigation={this.props.navigation} title="#"  />
 
                             <View   style={styles.Header}>
                                <View style={styles.avatarBox}>
