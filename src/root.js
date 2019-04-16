@@ -52,7 +52,11 @@ const defaultNavigationOptions = {
       left: 0,
       right: 0,  
     },
-    headerTintColor: colors.white,
+    headerTintColor: colors.black,
+    headerMode: 'none',
+    navigationOptions: {
+        headerVisible: false,
+    }
     
   }
 
@@ -95,10 +99,12 @@ const AuthLoadingScreen = StackNavigator({
 const MainStack = createStackNavigator({
     Main : {
         screen : MainScreen,
-        navigationOptions: ({ navigation }) => ({ 
+        navigationOptions: ({ navigation }) => ({  
             title: 'Falang',  // Title to appear in status bar
-            headerRight: <IconHeader name="menu" size={25} style={{paddingRight: 10}} color={colors.white} onPress={ () => navigation.openDrawer() } />
-          })
+            headerRight: <IconHeader name="menu" size={25} style={{paddingRight: 10}} color={colors.white} onPress={ () => navigation.openDrawer() } />,
+           
+          }),
+      
     },
     Index : {
         screen : IndexScreen
@@ -124,6 +130,7 @@ const MainStack = createStackNavigator({
 
 },
 {
+   
     navigationOptions: {...defaultNavigationOptions}
 })
 

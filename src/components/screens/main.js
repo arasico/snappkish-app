@@ -1,6 +1,13 @@
 import React, {Component } from "react";
-import {  View , StyleSheet , ImageBackground , Text , TouchableOpacity } from "react-native";
+import {  View , StyleSheet , ImageBackground ,Image, Text , TouchableOpacity } from "react-native";
 import { Container, Left, Button, Body, Title, Right, Header , Icon} from 'native-base';
+import {
+    widthPercentageToDP as wp,
+    heightPercentageToDP as hp,
+    listenOrientationChange as loc,
+    removeOrientationListener as rol
+  } from 'react-native-responsive-screen';
+
 import Icons from '../../styles/icons'
 
 import colors from '../../styles/colors';
@@ -31,15 +38,17 @@ class Main extends Component{
       }
     
       static navigationOptions = {
+        header: null,
         drawerIcon : (
           <Icon name="home" size={24} color="#222"  />
         ),
-        title: 'Home',
+        title: 'Home', 
         
       }
+   
 
 
-    render(){
+      render(){
         return (
 
             <View style={styles.backgroundImage} >
@@ -116,8 +125,7 @@ const styles = StyleSheet.create({
 
     },
     menuContainerPadding : { 
-        flexDirection: 'row',  
-        elevation: 3, 
+        flexDirection: 'row',   
         width:'80%',
         borderRadius:5, 
         alignSelf: 'center' ,   
@@ -128,8 +136,7 @@ const styles = StyleSheet.create({
 
     },
     menuContainerPaddingTwo:{ 
-        flexDirection: 'row',  
-        elevation: 3, 
+        flexDirection: 'row',   
         width:'80%',
         borderRadius:5, 
         alignSelf: 'center' ,   
@@ -140,8 +147,7 @@ const styles = StyleSheet.create({
 
     Header:{  
         justifyContent: 'center',
-        alignItems:'center',
-        paddingTop: 20
+        alignItems:'center', 
         
     },
     avatarBox:{
@@ -155,8 +161,7 @@ const styles = StyleSheet.create({
     textContainer:{
         justifyContent: 'center',
         alignItems:'center', 
-        position: 'absolute',
-        top:150,
+        // position: 'absolute', 
         zIndex:4
     },
     avatarContainer:{
@@ -178,7 +183,7 @@ const styles = StyleSheet.create({
     MenuButton:{
         backgroundColor:'#F1F1F1',
         width:150,
-        height:130,
+        height:110,
         margin:5,
         borderRadius:5,
         elevation: 3,
@@ -190,8 +195,3 @@ const styles = StyleSheet.create({
 
 
 export default Main ;
-
-
- 
-
- 

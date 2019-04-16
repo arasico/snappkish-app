@@ -13,7 +13,8 @@ class LogoComponent extends Component {
             <View>
                 <View style={styles.logoContainer}>
                     
-                    <Image source={require('../../assets/img/logo.png')}   style={{height: 80,resizeMode:'center',  alignSelf:'center',padding:10}} />
+                    <Image source={require('../../assets/img/logo.png')}   style={{   resizeMode: 'contain',
+        height: 80,  alignSelf:'center',padding:10}} />
                 </View>
 
             </View>
@@ -34,7 +35,7 @@ const styles = StyleSheet.create({
 
     logoContainer:{
         alignSelf: 'center',
-        justifyContent: 'center',
+        justifyContent: 'center', 
     }
 
 });

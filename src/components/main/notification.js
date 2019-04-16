@@ -1,5 +1,11 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet , Button, TouchableOpacity} from 'react-native';
+import {
+    widthPercentageToDP as wp,
+    heightPercentageToDP as hp,
+    listenOrientationChange as loc,
+    removeOrientationListener as rol
+  } from 'react-native-responsive-screen';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 //
 //
@@ -43,7 +49,7 @@ const styles = StyleSheet.create({
 
     container:{ 
         backgroundColor: '#f2f2f2',
-        height: 90,
+        height: 80,
         flexDirection: 'row', 
         paddingVertical: 10,
         elevation: 3,
@@ -52,8 +58,8 @@ const styles = StyleSheet.create({
         borderRadius:5, 
         alignSelf: 'center' ,  
         position: 'absolute',
-        top:230,
-        zIndex:3
+        top:wp('63%'),
+        zIndex:5
 
     },
     PpriceContainer:{    

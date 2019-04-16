@@ -42,7 +42,7 @@ class Login extends Component {
             behavior="padding"
             keyboardVerticalOffset={Platform.OS === 'ios' ? 0 : -300}
           >
-                <ImageBackground source={require('../../assets/img/onboarding1.png')} style={styles.backgroundImage}>
+                <ImageBackground source={require('../../assets/img/climb.png')} style={styles.backgroundImage}>
 
                     <View style={styles.card}>
                         <LogoComponent />
