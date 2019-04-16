@@ -49,7 +49,7 @@ const styles = StyleSheet.create({
 
     container:{ 
         backgroundColor: '#f2f2f2',
-        height: 90,
+        height: 80,
         flexDirection: 'row', 
         paddingVertical: 10,
         elevation: 3,
@@ -58,8 +58,8 @@ const styles = StyleSheet.create({
         borderRadius:5, 
         alignSelf: 'center' ,  
         position: 'absolute',
-        top:wp('53%'),
-        zIndex:3
+        top:wp('63%'),
+        zIndex:5
 
     },
     PpriceContainer:{    

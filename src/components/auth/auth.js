@@ -50,7 +50,7 @@ class Auth extends Component{
             keyboardVerticalOffset={Platform.OS === 'ios' ? 0 : -300}
           >
                 <ImageBackground source={require('../../assets/img/climb.png')} style={styles.backgroundImage}>
-                    <ImageBackground source={require('../../assets/img/gradient.png')} style={styles.backgroundImage}>
+                    
 
                        <View style={styles.maincontainer}>
                        <View style={styles.logoContainer}>
@@ -70,9 +70,9 @@ class Auth extends Component{
                                     <Button onPress={this.loginPage}>
                                         <View style={styles.buttonLogin}>
                                         {isLoading ? (
-                                            <ActivityIndicator color="white" />
+                                            <ActivityIndicator color="#333333" />
                                         ) : (
-                                            <Text style={styles.buttonTextLogin}>ورود به فالنگ</Text>
+                                            <Text style={styles.buttonTextLogin}>ورود</Text>
                                         )}
                                         </View>
                                         
@@ -82,7 +82,7 @@ class Auth extends Component{
                         </View>
 
                        </View>
-                    </ImageBackground>
+                   
                 </ImageBackground>
             </KeyboardAvoidingView>
            
@@ -128,7 +128,7 @@ const styles = StyleSheet.create({
       },
       logo: {
         resizeMode: 'contain',
-        height: 104,
+        height: 80,
       },
       buttonContainer:{
           padding:10,
@@ -161,7 +161,7 @@ const styles = StyleSheet.create({
       },
       buttonTextLogin: {
         fontSize:20,
-        color: colors.red,
+        color: colors.black,
         fontFamily: 'IRANSans',
       },
 

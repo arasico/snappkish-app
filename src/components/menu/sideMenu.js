@@ -62,7 +62,7 @@ class SideMenu extends Component {
 
             <View style={styles.navSectionStyle}>
               <Text style={styles.navItemStyle} onPress={this.navigateToScreen('AboutFalang')}>
-              درباره فالنگ
+              درباره ما
               </Text>
               <Icon.Ionicons name="ios-information-circle-outline" size={22} style={styles.iconNav} color={colors.red} />
             </View>

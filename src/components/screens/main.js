@@ -38,29 +38,67 @@ class Main extends Component{
       }
     
       static navigationOptions = {
+        header: null,
         drawerIcon : (
           <Icon name="home" size={24} color="#222"  />
         ),
-        title: 'Home',
+        title: 'Home', 
         
       }
+   
 
 
-    render(){
+      render(){
         return (
 
-            <View style={styles.container} >
+            <View style={styles.backgroundImage} >
+
+
+                        <ImageBackground source={require('../../assets/img/dashboard-blue.png')} style={styles.dashboard} >
+                            <HeaderMain navigation={this.props.navigation} title="#"  />
+
+                            <View   style={styles.Header}>
+                               <View style={styles.avatarBox}>
+                                    <View style={styles.avatarContainer}>
+                                            <Icons.Ionicons name="md-person" size={50} style={styles.iconNav} />
+                                    </View>
+                               </View>
+                                <View style={styles.textContainer}>
+                                    <Text>Sara Daniewswl</Text>
+                                    <Text>0911 217 1414</Text>
+                                </View>
+                                
+                            </View>
+
+                        </ImageBackground>
+                        <Wallet onPress={this._callNotification.bind(this)} />
+                     
+                        <View style={styles.menuContainer}>
+                            <View style={styles.menuContainerPadding}>
+                                <TouchableOpacity style={styles.MenuButton} onPress={this.props.onPress }>
+                                </TouchableOpacity>
+
+                                <TouchableOpacity style={styles.MenuButton} onPress={this.props.onPress }>
+                                </TouchableOpacity>
+
+                            </View>
+
+                            <View style={styles.menuContainerPaddingTwo}>
+                                <TouchableOpacity style={styles.MenuButton} onPress={this.props.onPress }>
+                                </TouchableOpacity>
+
+                                <TouchableOpacity style={styles.MenuButton} onPress={this.props.onPress }>
+                                </TouchableOpacity>
+
+                            </View>
+                           
+                        </View>
+
                       
-                   
 
-
-                   
-                    <View style={styles.cardUp}>
-                        <Image source={require('../../assets/img/dashboard-blue.png')} style={styles.backgroundImage}>
                         
-                        </Image>
-                    </View>
-                    <View style={styles.cardDwon}></View>
+
+                    
 
             </View>
         )
@@ -68,57 +106,26 @@ class Main extends Component{
 }
 
 const styles = StyleSheet.create({
-
-
-    container:{
-        flex:1,
-
-    },
-
-    cardUp:{
-        flex:2,
-        flexDirection:'column',
-        backgroundColor:'blue',
-          
-
-    },
-    cardDwon:{
-        flex:4,
-        flexDirection:'column',
-        backgroundColor:'red',
-
-    },
-
-
-
-
-
-
-
-    backgroundImage: { 
-        height: '100%',
+    backgroundImage: {
         width: '100%',
-        position: 'absolute',
-        top: 0,
-        left: 0,
-        right:0
-
+        height: '100%',
+        backgroundColor: '#F3F5F9',  
+        margin:0,
+        padding: 0
 
     },
-    dashboard: {    
-        // height: wp('67%'), 
-        backgroundColor:'blue',
-        width: '100%', height: '100%'
+    dashboard: {
+        flex: 2,
+        width: '100%',
     },
     menuContainer:{
-        // flex: 3,
-        // backgroundColor: 'red',  
-        width: wp('100%'), 
-        marginTop: wp('10%')
+        flex: 2,
+        backgroundColor: '#F3F5F9',  
+        marginTop: 40
 
     },
     menuContainerPadding : { 
-        flexDirection: 'row',  
+        flexDirection: 'row',   
         width:'80%',
         borderRadius:5, 
         alignSelf: 'center' ,   
@@ -139,7 +146,6 @@ const styles = StyleSheet.create({
     },
 
     Header:{  
-        flex:1,
         justifyContent: 'center',
         alignItems:'center', 
         
@@ -154,7 +160,8 @@ const styles = StyleSheet.create({
     },
     textContainer:{
         justifyContent: 'center',
-        alignItems:'center',  
+        alignItems:'center', 
+        // position: 'absolute', 
         zIndex:4
     },
     avatarContainer:{
@@ -169,14 +176,14 @@ const styles = StyleSheet.create({
         
     },
     iconNav:{
-    //   paddingHorizontal:10,
+      paddingHorizontal:10,
 
     },
 
     MenuButton:{
         backgroundColor:'#F1F1F1',
-        width:wp('39%'),
-        height:wp('35%'),
+        width:150,
+        height:110,
         margin:5,
         borderRadius:5,
         elevation: 3,
@@ -188,8 +195,3 @@ const styles = StyleSheet.create({
 
 
 export default Main ;
-
-
- 
-
- 
