@@ -28,6 +28,13 @@ import IndexScreen from './components/wordsBox/index';  // show words
 import ProScreen from './components/proComponent/proIndex';
 import PaymentScreen from './components/proComponent/payment';
 
+//
+// Dashboard Comnponer  ---------------------------->
+//
+
+import ProductScreen from './components/screens/product';
+
+
 import TestScreen from './test';
 
 import SideBar from './components/menu/sideMenu';
@@ -127,6 +134,9 @@ const MainStack = createStackNavigator({
     Paymnet : {
         screen : PaymentScreen
     },
+    ProductComponent : {
+        screen : ProductScreen
+    }
 
 },
 {
