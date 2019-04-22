@@ -3,47 +3,56 @@ import { View, Text, TextInput, StyleSheet , TouchableOpacity } from 'react-nati
 
 import colors from '../../styles/colors'
 
+//
+// Icons ----------------------->
+//
+
+import IconSearch from 'react-native-vector-icons/Ionicons'
+
+
 const styles = StyleSheet.create({
 
-container: { 
-        flexDirection: 'row',
-        backgroundColor:'red'
+    container: { 
+            flexDirection: 'row', 
+        },
+    searchContainer:{
+            flex:1, 
+            padding:5,
+            alignItems: 'center',
+            justifyContent: 'center',
+        },
+    InputContainer:{
+            flex:6, 
+            padding:5,
+
+        },
+    inputLabel: {
+            fontSize: 14,
+            color: colors.red,
+            fontFamily: "IRANSans",
     },
-searchContainer:{
-        flex:1,
-        backgroundColor:'yellow',
-        padding:5,
+    inputBox: { 
+            color: colors.shadow,  
+            textAlign: 'right',
+            fontFamily:'IRANSans',
+            padding: 5
+    
     },
-InputContainer:{
-        flex:6,
-        backgroundColor:'blue',
-        padding:5,
+    empty: { 
 
     },
-inputLabel: {
-        fontSize: 14,
-        color: colors.red,
-        fontFamily: "IRANSans",
-  },
-inputBox: { 
-        color: colors.shadow,  
-        textAlign: 'right',
-        fontFamily:'IRANSans',
-        padding: 5
-   
-  },
-empty: { 
+    error: {
+            color: colors.google,
+            fontSize: 16,
+    },
+    buttonSearchContainer:{
+            width:40,
+            height: 40, 
+            alignItems: 'center',
+            justifyContent: 'center',
 
-  },
-error: {
-        color: colors.google,
-        fontSize: 16,
-  },
-buttonSearchContainer:{
-        width:30,
-        height: 30,
-        backgroundColor: 'red'
-  }
+
+    }
 })
 
 const SearchInput = (
@@ -68,7 +77,7 @@ const SearchInput = (
   <View {...props} style={styles.container}>
     <View style={styles.searchContainer}>
         <TouchableOpacity style={styles.buttonSearchContainer}>
-
+            <IconSearch style={{color: '#555555'}}  size={25} name='ios-search' />
         </TouchableOpacity>
     </View>
     <View style={styles.InputContainer}>

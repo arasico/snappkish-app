@@ -153,18 +153,18 @@ const styles = StyleSheet.create({
     },
     menuContainerPadding : { 
         flexDirection: 'row',   
-        width:'80%',
+        width:'100%',
         borderRadius:5, 
         alignSelf: 'center' ,   
         justifyContent:'center',
         alignItems:'center',
         zIndex:3,
-        marginTop: 10
+        marginTop: 10, 
 
     },
     menuContainerPaddingTwo:{ 
         flexDirection: 'row',   
-        width:'80%',
+        width:'100%',
         borderRadius:5, 
         alignSelf: 'center' ,   
         justifyContent:'center',
