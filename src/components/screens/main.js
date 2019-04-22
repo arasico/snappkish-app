@@ -6,7 +6,9 @@ import {
     heightPercentageToDP as hp,
     listenOrientationChange as loc,
     removeOrientationListener as rol
-  } from 'react-native-responsive-screen';
+  } from 'react-native-responsive-screen'; 
+
+
 
 import Icons from '../../styles/icons'
 
@@ -16,6 +18,10 @@ import Wallet from '../main/notification';
 import Progress from '../main/progress';
 import Footer from '../main/footer';
 import HeaderMain from "../headers/headerMain";
+
+
+ 
+
 
 class Main extends Component{
 
@@ -76,6 +82,7 @@ class Main extends Component{
                         <View style={styles.menuContainer}>
                             <View style={styles.menuContainerPadding}>
                                 <TouchableOpacity style={styles.MenuButton} onPress={this.props.onPress }>
+                               
                                 </TouchableOpacity>
 
                                 <TouchableOpacity style={styles.MenuButton} onPress={this.props.onPress }>
