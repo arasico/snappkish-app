@@ -7,6 +7,7 @@ import {
     listenOrientationChange as loc,
     removeOrientationListener as rol
   } from 'react-native-responsive-screen'; 
+  import {H1, H2, HR} from '../../typography'
 
 
 
@@ -21,6 +22,9 @@ import HeaderMain from "../headers/headerMain";
 
 
 import IconBarcode from 'react-native-vector-icons/MaterialCommunityIcons'
+import IconTicket from 'react-native-vector-icons/FontAwesome5'
+import IconChart from 'react-native-vector-icons/FontAwesome'
+import IconCancel from 'react-native-vector-icons/MaterialCommunityIcons'
 
 
 
@@ -84,19 +88,25 @@ class Main extends Component{
                             <View style={styles.menuContainerPadding}>
                                 <TouchableOpacity style={styles.MenuButton} onPress={this.props.onPress }>
                                     <IconBarcode style={{color: '#46ADD8'}}  size={40} name='barcode-scan' />
-                               
+                                    <H2 style={styles.menuTextStyle}>مدیریت محصول</H2>
                                 </TouchableOpacity>
 
                                 <TouchableOpacity style={styles.MenuButton} onPress={this.props.onPress }>
+                                    <IconTicket style={{color: '#46ADD8'}}  size={40} name='ticket-alt' />
+                                    <H2 style={styles.menuTextStyle}>مدیریت تورها</H2>
                                 </TouchableOpacity>
 
                             </View>
 
                             <View style={styles.menuContainerPaddingTwo}>
                                 <TouchableOpacity style={styles.MenuButton} onPress={this.props.onPress }>
+                                    <IconChart style={{color: '#46ADD8'}}  size={40} name='line-chart' />
+                                    <H2 style={styles.menuTextStyle}>گزارش فروش</H2>
                                 </TouchableOpacity>
 
                                 <TouchableOpacity style={styles.MenuButton} onPress={this.props.onPress }>
+                                    <IconCancel style={{color: '#46ADD8'}}  size={40} name='cancel' />
+                                    <H2 style={styles.menuTextStyle}>ابطال بلیط</H2>
                                 </TouchableOpacity>
 
                             </View>
@@ -198,9 +208,10 @@ const styles = StyleSheet.create({
         elevation: 3,
         justifyContent:'center',
         alignItems:'center'
-
-
-
+    },
+    menuTextStyle: {
+        paddingTop:5,
+        color:'#555555'
     }
 })
 
