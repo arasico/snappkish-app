@@ -9,7 +9,7 @@ const styles = StyleSheet.create({
     color: colors.default,
     fontFamily: 'IRANSans_Bold', 
     fontWeight: '700',
-    marginBottom: 5, 
+    marginBottom: 5,  
   },
 })
 
