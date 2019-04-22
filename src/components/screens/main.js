@@ -83,6 +83,7 @@ class Main extends Component{
                         <View style={styles.menuContainer}>
                             <View style={styles.menuContainerPadding}>
                                 <TouchableOpacity style={styles.MenuButton} onPress={this.props.onPress }>
+                                    <IconFont style={{color: '#fff'}}  size={22} name='volume-up' />
                                
                                 </TouchableOpacity>
 
