@@ -33,6 +33,10 @@ class  ProductComponent extends Component {
                         keyboardType={'numeric'}
                         onpress={this.onpress}
                         />
+
+
+
+                        
                </View>
             </View>
          );
