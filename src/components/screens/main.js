@@ -20,7 +20,7 @@ import Footer from '../main/footer';
 import HeaderMain from "../headers/headerMain";
 
 
-import IconFont from 'react-native-vector-icons/FontAwesome5'
+import IconBarcode from 'react-native-vector-icons/MaterialCommunityIcons'
 
 
 
@@ -83,7 +83,7 @@ class Main extends Component{
                         <View style={styles.menuContainer}>
                             <View style={styles.menuContainerPadding}>
                                 <TouchableOpacity style={styles.MenuButton} onPress={this.props.onPress }>
-                                    <IconFont style={{color: '#fff'}}  size={22} name='volume-up' />
+                                    <IconBarcode style={{color: '#46ADD8'}}  size={40} name='barcode-scan' />
                                
                                 </TouchableOpacity>
 
@@ -196,6 +196,8 @@ const styles = StyleSheet.create({
         margin:5,
         borderRadius:5,
         elevation: 3,
+        justifyContent:'center',
+        alignItems:'center'
 
 
 
