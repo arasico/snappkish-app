@@ -56,6 +56,15 @@ class Main extends Component{
         title: 'Home', 
         
       }
+
+
+      //
+      //   Dahsboard Click Button  ------------------->
+      //
+
+      onPressDashboard = () => {
+        this.props.navigation.navigate('ProductComponent');
+      }
    
 
 
@@ -86,16 +95,15 @@ class Main extends Component{
                      
                         <View style={styles.menuContainer}>
                             <View style={styles.menuContainerPadding}>
-                                <TouchableOpacity style={styles.MenuButton} onPress={this.props.onPress }>
+                                <TouchableOpacity style={styles.MenuButton} onPress={this.onPressDashboard.bind(this) }>
                                     <IconBarcode style={{color: '#46ADD8'}}  size={40} name='barcode-scan' />
                                     <H2 style={styles.menuTextStyle}>مدیریت محصول</H2>
                                 </TouchableOpacity>
 
-                                <TouchableOpacity style={styles.MenuButton} onPress={this.props.onPress }>
+                                <TouchableOpacity style={styles.MenuButton} onPress={this.onPressDashboard }>
                                     <IconTicket style={{color: '#46ADD8'}}  size={40} name='ticket-alt' />
                                     <H2 style={styles.menuTextStyle}>مدیریت تورها</H2>
                                 </TouchableOpacity>
-
                             </View>
 
                             <View style={styles.menuContainerPaddingTwo}>

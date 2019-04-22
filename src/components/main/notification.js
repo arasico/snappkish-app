@@ -23,8 +23,6 @@ class Notification extends Component {
 
     render() { 
 
-
-
         return ( 
 
             <TouchableOpacity style={styles.container} onPress={this.props.onPress }>
