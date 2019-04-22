@@ -71,12 +71,13 @@ const SearchInput = (
     editable,
     labelStyle,
     fontSize,
+    onpress,
     ...props
   } = { labelStyle: null, fontSize: 14},
 ) => (
   <View {...props} style={styles.container}>
     <View style={styles.searchContainer}>
-        <TouchableOpacity style={styles.buttonSearchContainer}>
+        <TouchableOpacity style={styles.buttonSearchContainer} onPress={onpress}>
             <IconSearch style={{color: '#555555'}}  size={25} name='ios-search' />
         </TouchableOpacity>
     </View>
@@ -101,3 +102,29 @@ const SearchInput = (
 )
 
 export default SearchInput
+
+
+
+
+/*  Example to use search input
+
+    import SearchInput from '../../components/textgroup/search-input'; 
+
+
+      onpress = () => {
+        console.log("Press is worked!")
+    }
+
+
+    <SearchInput  
+        placeholder="جستجو . . ."
+        style={styles.txtInput}
+        maxLength={30}
+        keyboardType={'numeric'}
+        onpress={this.onpress}
+    />
+
+
+
+
+*/

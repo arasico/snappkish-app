@@ -6,7 +6,7 @@ import {View, Text, StyleSheet, TouchableOpacity, KeyboardAvoidingView, Platform
 //
 import colors from '../../styles/colors'
 import Icon from '../../styles/icons'
-import SearchInput from '../../components/textgroup/search-input';
+import SearchInput from '../../components/textgroup/search-input'; 
 
 
 
@@ -15,6 +15,13 @@ class  ProductComponent extends Component {
         super(props);
         this.state = {  }
     }
+
+
+
+    onpress = () => {
+        console.log("Press is worked!")
+    }
+
     render() { 
         return ( 
             <View style={styles.container}>
@@ -24,6 +31,7 @@ class  ProductComponent extends Component {
                         style={styles.txtInput}
                         maxLength={30}
                         keyboardType={'numeric'}
+                        onpress={this.onpress}
                         />
                </View>
             </View>
