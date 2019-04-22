@@ -30,6 +30,12 @@ import IconCancel from 'react-native-vector-icons/MaterialCommunityIcons'
 
 class Main extends Component{
 
+    constructor(props) {
+        super(props);
+        this.state = {  }
+
+        this.onPressDashboard = this.onPressDashboard.bind(this)
+    }
 
 
     CallWordBox = () =>{
@@ -62,8 +68,8 @@ class Main extends Component{
       //   Dahsboard Click Button  ------------------->
       //
 
-      onPressDashboard = () => {
-        this.props.navigation.navigate('ProductComponent');
+      onPressDashboard  (val) {
+        this.props.navigation.navigate(val);
       }
    
 
@@ -95,24 +101,24 @@ class Main extends Component{
                      
                         <View style={styles.menuContainer}>
                             <View style={styles.menuContainerPadding}>
-                                <TouchableOpacity style={styles.MenuButton} onPress={this.onPressDashboard.bind(this) }>
+                                <TouchableOpacity style={styles.MenuButton} onPress={() => this.onPressDashboard('ProductComponent')}>
                                     <IconBarcode style={{color: '#46ADD8'}}  size={40} name='barcode-scan' />
                                     <H2 style={styles.menuTextStyle}>مدیریت محصول</H2>
                                 </TouchableOpacity>
 
-                                <TouchableOpacity style={styles.MenuButton} onPress={this.onPressDashboard }>
+                                <TouchableOpacity style={styles.MenuButton} onPress={() => this.onPressDashboard('ProductComponent') }>
                                     <IconTicket style={{color: '#46ADD8'}}  size={40} name='ticket-alt' />
                                     <H2 style={styles.menuTextStyle}>مدیریت تورها</H2>
                                 </TouchableOpacity>
                             </View>
 
                             <View style={styles.menuContainerPaddingTwo}>
-                                <TouchableOpacity style={styles.MenuButton} onPress={this.props.onPress }>
+                                <TouchableOpacity style={styles.MenuButton} onPress={() => this.onPressDashboard('ProductComponent') }>
                                     <IconChart style={{color: '#46ADD8'}}  size={40} name='line-chart' />
                                     <H2 style={styles.menuTextStyle}>گزارش فروش</H2>
                                 </TouchableOpacity>
 
-                                <TouchableOpacity style={styles.MenuButton} onPress={this.props.onPress }>
+                                <TouchableOpacity style={styles.MenuButton} onPress={() => this.onPressDashboard('ProductComponent') }>
                                     <IconCancel style={{color: '#46ADD8'}}  size={40} name='cancel' />
                                     <H2 style={styles.menuTextStyle}>ابطال بلیط</H2>
                                 </TouchableOpacity>
