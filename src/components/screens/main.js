@@ -20,7 +20,8 @@ import Footer from '../main/footer';
 import HeaderMain from "../headers/headerMain";
 
 
- 
+import IconFont from 'react-native-vector-icons/FontAwesome5'
+
 
 
 class Main extends Component{
