@@ -131,7 +131,7 @@ class Main extends Component{
 
 
                         <View style={styles.partTwo}>
-                            <TouchableOpacity style={styles.buttonDashboard} onPress={() => this.onPressDashboard('ProductComponent') }>
+                            <TouchableOpacity style={styles.buttonDashboard} onPress={() => this.onPressDashboard('QrCompoenent') }>
                                 <Text style={{fontSize:normalize(18), color:'#333333', fontFamily:'IRANSans'}}>ابطال بلیط</Text>
                                 <IconBarcode style={{color: '#46ADD8', paddingLeft:30}}  size={40} name='barcode-scan' />
                                 
