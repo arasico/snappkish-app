@@ -40,11 +40,19 @@ class  QrCompoenent extends Component {
       }
  
 
+      onPressDashboard  (val) {
+        this.props.navigation.navigate(val);
+      }
+
+
+
     render() { 
  
         return ( 
             <View style={styles.container}>
-            <View style={styles.lineBarcode}></View>
+                <View style={styles.lineBarcode}></View>
+                <View style={styles.barcodeBox}></View>
+
                 <QRCodeScanner 
                     
                     onRead={this.onSuccess.bind(this)}
@@ -54,9 +62,9 @@ class  QrCompoenent extends Component {
                     </Text>
                     }
                     bottomContent={
-                    <TouchableOpacity style={styles.buttonTouchable}>
+                    <TouchableOpacity style={styles.buttonTouchable} onPress={() => this.onPressDashboard('TicketComponnet')}>
                         {/* <Text style={styles.buttonText}>OK. Got it!</Text> */}
-                        <View style={styles.container}>
+                        <View style={styles.container} >
                             <Text  style={styles.buttonTouchable}>{this.state.errordev}</Text>
                         </View>
                     </TouchableOpacity>
@@ -76,6 +84,10 @@ class  QrCompoenent extends Component {
 const styles = StyleSheet.create({
     container:{
         flex:1,
+        justifyContent: 'center',
+        alignItems:'center',
+        backgroundColor: '#fff',
+
     },
     centerText: { 
       fontSize: 18,
@@ -95,7 +107,7 @@ const styles = StyleSheet.create({
       color: 'rgb(0,122,255)', 
     },
     buttonTouchable: {
-      padding: 16,
+      padding: 16, 
    
     },
     lineBarcode :{
@@ -103,8 +115,23 @@ const styles = StyleSheet.create({
         zIndex:999, 
         borderWidth: 2,
         borderColor: 'rgba(197, 20, 20, 0.45098039215686275)',
-        width: '100%',
-        top:'50%'
+        width: '90%',
+        top:'50%', 
+        alignItems: 'center',
+
+
+    },
+    barcodeBox:{
+        width:300,
+        height: 200, 
+        position:'absolute',
+        zIndex:998, 
+        top:'33%',
+        borderRadius: 4,
+        borderWidth: 10,
+        borderColor: '#fff',
+      
+
 
     }
   });
