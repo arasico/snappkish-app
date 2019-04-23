@@ -1,5 +1,7 @@
 import React , { Component } from 'react';
-import {View, Text, StyleSheet, TouchableOpacity, KeyboardAvoidingView, Platform , ImageBackground , ScrollView, Linking} from 'react-native';
+import {View, Text, StyleSheet, TouchableOpacity, 
+    KeyboardAvoidingView, Platform , 
+    ImageBackground , ScrollView, Image} from 'react-native';
 import {H1, H2, HR} from '../../typography'
 import SearchInput from '../../components/textgroup/search-input'; 
 import normalize from '../../styles/normalizeText';
@@ -49,7 +51,17 @@ class  TicketComponnet extends Component {
 
                 <View style={{width:'100%',  alignItems: 'center', }}> 
                     <View style={styles.card}>
-                        <Text>dddddddd</Text>
+                        <View style={styles.logoContainer}>
+                            <Image
+                                source={require('../../assets/img/logo.png')}
+                                style={styles.logo}
+                            />
+                        </View>
+
+                        <View style={styles.contentContainer}>
+                            <View style={styles.menuButtonContainer}></View>
+
+                        </View>
                     </View>
                 </View>
 
@@ -102,9 +114,32 @@ const styles = StyleSheet.create({
         elevation: 3 ,
         borderRadius: 3 , 
         padding: 5
+    },
+    logoContainer : {
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+    logo: {
+        resizeMode: 'contain',
+        height: 80,
+        
+    },
+    contentContainer : {
+        width:'100%',
+        height:50,
+        backgroundColor:'red',
+        flexDirection: 'column',
+    
+    },
+    menuButtonContainer : {
+        flexDirection:'row',
 
-
+    },
+    buttonContainer:{
+        
     }
+
+
   });
  
 export default  TicketComponnet;
