@@ -141,7 +141,11 @@ const MainStack = createStackNavigator({
         screen : QrCompoenentScreen
     },
     TicketComponnet : {
-        screen : TicketComponnetScreen
+        screen : TicketComponnetScreen,
+        headerMode: 'none' ,
+        navigationOptions: {
+            headerVisible: false,
+        }
     }
 
 },

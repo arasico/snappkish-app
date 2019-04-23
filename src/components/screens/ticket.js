@@ -27,6 +27,9 @@ import IocnsEntypo from 'react-native-vector-icons/Entypo'
 
 
 
+
+
+
 class  TicketComponnet extends Component {
     constructor(props) {
         super(props);
@@ -34,7 +37,21 @@ class  TicketComponnet extends Component {
     }
 
 
+    static navigationOptions = {
+        header: null, 
+        
+      }
  
+
+
+      _callBack() { 
+        this.props.navigation.goBack();
+    }
+
+    onPressDashboard  (val) {
+        this.props.navigation.navigate(val);
+      }
+   
 
     render() { 
  
@@ -42,7 +59,7 @@ class  TicketComponnet extends Component {
             <View style={styles.container}>
                 <View style={styles.header}>
                     <View style={styles.headerClose}>
-                        <TouchableOpacity style={styles.btnClose}>
+                        <TouchableOpacity style={styles.btnClose} onPress={this._callBack.bind(this)}>
                             <IconsIonic style={{color: '#333333'}}  size={20} name='md-close' />
                         </TouchableOpacity>
                     </View>
@@ -63,12 +80,12 @@ class  TicketComponnet extends Component {
                         <View style={styles.contentContainer}>
                             <View style={styles.menuButtonContainer}>
                                 <TouchableOpacity style={styles.buttonContainer}>
-                                    <IocnsEntypo style={{color: '#46ADD8'}}  size={30} name='old-phone' />
+                                    <IocnsEntypo style={{color: '#46ADD8'}}  size={normalize(15)} name='old-phone' />
                                     <Text style={styles.buttonTittle}>تلفن تماس</Text>
                                     <Text style={styles.buttonTittleBold}>09111231425</Text>
                                 </TouchableOpacity>  
                                 <TouchableOpacity style={styles.buttonContainer}>
-                                    <IocnFontAwesome5 style={{color: '#46ADD8'}}  size={30} name='user-alt' />
+                                    <IocnFontAwesome5 style={{color: '#46ADD8'}}  size={normalize(15)} name='user-alt' />
                                     <Text style={styles.buttonTittle}>نام و نام خانوادگی</Text>
                                     <Text style={styles.buttonTittleBold}>امیدآرمانی</Text>
                                 </TouchableOpacity>  
@@ -76,12 +93,12 @@ class  TicketComponnet extends Component {
 
                             <View style={styles.menuButtonContainer}>
                                 <TouchableOpacity style={styles.buttonContainer}>
-                                    <IocnFontAwesome5 style={{color: '#46ADD8'}}  size={normalize(25)} name='calendar-alt' />
+                                    <IocnFontAwesome5 style={{color: '#46ADD8'}}  size={normalize(15)} name='calendar-alt' />
                                     <Text style={styles.buttonTittle}> تاریخ</Text>
                                     <Text style={styles.buttonTittleBold}>10/12/2019</Text>
                                 </TouchableOpacity>  
                                 <TouchableOpacity style={styles.buttonContainer}>
-                                    <IocnFontAwesome5 style={{color: '#46ADD8'}}  size={normalize(25)} name='ticket-alt' />
+                                    <IocnFontAwesome5 style={{color: '#46ADD8'}}  size={normalize(15)} name='ticket-alt' />
                                     <Text style={styles.buttonTittle}> نام محصول </Text>
                                     <Text style={styles.buttonTittleBold}>پاراگلایدر</Text>
                                 </TouchableOpacity>  
@@ -89,12 +106,12 @@ class  TicketComponnet extends Component {
 
                             <View style={styles.menuButtonContainer}>
                                 <TouchableOpacity style={styles.buttonContainer}>
-                                    <IocnFontAwesome5 style={{color: '#46ADD8'}}  size={normalize(25)} name='clock' />
+                                    <IocnFontAwesome5 style={{color: '#46ADD8'}}  size={normalize(15)} name='clock' />
                                     <Text style={styles.buttonTittle}> سانس</Text>
                                     <Text style={styles.buttonTittleBold}>10 - 12</Text>
                                 </TouchableOpacity>  
                                 <TouchableOpacity style={styles.buttonContainer}>
-                                    <IocnFontAwesome5 style={{color: '#46ADD8'}}  size={normalize(25)} name='coins' />
+                                    <IocnFontAwesome5 style={{color: '#46ADD8'}}  size={normalize(15)} name='coins' />
                                     <Text style={styles.buttonTittle}>مبلغ</Text>
                                     <Text style={styles.buttonTittleBold}>130.000 تومان</Text>
                                 </TouchableOpacity>  
@@ -102,17 +119,23 @@ class  TicketComponnet extends Component {
 
                             <View style={styles.menuButtonContainer}>
                                 <TouchableOpacity style={styles.buttonContainer}>
-                                    <IocnFontAwesome5 style={{color: '#46ADD8'}}  size={normalize(25)} name='users' />
+                                    <IocnFontAwesome5 style={{color: '#46ADD8'}}  size={normalize(15)} name='users' />
                                     <Text style={styles.buttonTittle}> تعداد</Text>
                                     <Text style={styles.buttonTittleBold}>15 نفر</Text>
                                 </TouchableOpacity>  
                                 <TouchableOpacity style={styles.buttonContainer}>
-                                    <IocnFontAwesome5 style={{color: '#46ADD8'}}  size={normalize(25)} name='user-secret' />
+                                    <IocnFontAwesome5 style={{color: '#46ADD8'}}  size={normalize(15)} name='user-secret' />
                                     <Text style={styles.buttonTittle}>نام آژانس</Text>
                                     <Text style={styles.buttonTittleBold}>آژانس وحدت</Text>
                                 </TouchableOpacity>  
                             </View>
 
+                        </View>
+                        <View style={styles.contentContainer}>
+                            <TouchableOpacity style={styles.btnSubmit} onPress={() => this.onPressDashboard('QrCompoenent') } >
+                                <Text style={styles.btnSubmitText}> ثبت</Text>
+                                <IconsIonic style={{color: '#ffffff', flex: 1, alignItems:'center', textAlign: 'center',}}  size={normalize(20)} name='ios-arrow-forward' />
+                            </TouchableOpacity> 
                         </View>
                     </View>
                 </View>
@@ -180,6 +203,7 @@ const styles = StyleSheet.create({
         width:'100%', 
         // backgroundColor:'red',
         flexDirection: 'column',
+        marginBottom: 20
     
     },
     menuButtonContainer : {
@@ -194,7 +218,7 @@ const styles = StyleSheet.create({
         alignItems:'center',
         justifyContent:'center',
         padding:10,
-        elevation: 2,
+        elevation: 2, 
 
     },
     buttonTittle: {
@@ -206,6 +230,27 @@ const styles = StyleSheet.create({
         fontFamily:'IRANSans_Bold',
         color:'#444444',
         fontSize:normalize(12),
+    },
+    btnSubmit : { 
+        backgroundColor:'#6FCF97', 
+        margin: 5,
+        borderRadius:3,
+        alignItems:'center',
+        justifyContent:'center',
+        padding:10,
+        elevation: 2,
+        flexDirection:'row',
+      
+    },
+    btnSubmitText : {
+        color:'#fff',
+        fontFamily:'IRANSans_Bold', 
+        fontSize:normalize(16),
+        flex:9,
+        alignItems:'center',
+        justifyContent:'center',
+        textAlign: 'center', 
+
     }
 
 

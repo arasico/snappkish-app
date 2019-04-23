@@ -25,15 +25,20 @@ import Icon from '../../styles/icons'
 class  QrCompoenent extends Component {
     constructor(props) {
         super(props);
-        this.state = { errordev:'No Number'  }
+        this.state = { errordev:'No Number',
+        isAuthorized: true,
+        reactivate: false }
     }
 
 
 
     onSuccess(e) {
         this.setState({
-            errordev: e.data
+            errordev: e.data,
+            isAuthorized: false,
+            reactivate: true
         })
+        this.onPressDashboard('TicketComponnet');
         // Linking
         //   .openURL(e.data)
         //   .catch(err => console.error('An error occured', err));
@@ -54,8 +59,11 @@ class  QrCompoenent extends Component {
                 <View style={styles.barcodeBox}></View>
 
                 <QRCodeScanner 
-                    
+                    showMarker={false}
+                    fadeIn={true}
+                    reactivate={true}
                     onRead={this.onSuccess.bind(this)}
+                    isAuthorized={this.state.isAuthorized}
                     topContent={
                     <Text style={styles.centerText}>
                        Put Your QR Code
