@@ -5,7 +5,8 @@ import SearchInput from '../../components/textgroup/search-input';
 import normalize from '../../styles/normalizeText';
 
 
-
+// example for QRcompoennt
+// https://stackoverflow.com/questions/46948736/react-native-qrcode-scanner-cannot-read-property-oneoftype-undefined
 
 //
 // QR code scanner liby
