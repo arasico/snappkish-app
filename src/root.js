@@ -33,6 +33,7 @@ import PaymentScreen from './components/proComponent/payment';
 //
 
 import ProductScreen from './components/screens/product';
+import QrCompoenentScreen from './components/screens/qrCompoen';
 
 
 import TestScreen from './test';
@@ -136,6 +137,9 @@ const MainStack = createStackNavigator({
     },
     ProductComponent : {
         screen : ProductScreen
+    },
+    QrCompoenent : {
+        screen : QrCompoenentScreen
     }
 
 },

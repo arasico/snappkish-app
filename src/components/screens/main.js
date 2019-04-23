@@ -8,6 +8,7 @@ import {
     removeOrientationListener as rol
   } from 'react-native-responsive-screen'; 
   import {H1, H2, HR} from '../../typography'
+  import normalize from '../../styles/normalizeText';
 
 
 
@@ -25,6 +26,7 @@ import IconBarcode from 'react-native-vector-icons/MaterialCommunityIcons'
 import IconTicket from 'react-native-vector-icons/FontAwesome5'
 import IconChart from 'react-native-vector-icons/FontAwesome'
 import IconCancel from 'react-native-vector-icons/MaterialCommunityIcons'
+
 
 
 
@@ -97,9 +99,9 @@ class Main extends Component{
                             </View>
 
                         </ImageBackground>
-                        <Wallet onPress={this._callNotification.bind(this)} />
+                        {/* <Wallet onPress={this._callNotification.bind(this)} /> */}
                      
-                        <View style={styles.menuContainer}>
+                        {/* <View style={styles.menuContainer}>
                             <View style={styles.menuContainerPadding}>
                                 <TouchableOpacity style={styles.MenuButton} onPress={() => this.onPressDashboard('ProductComponent')}>
                                     <IconBarcode style={{color: '#46ADD8'}}  size={40} name='barcode-scan' />
@@ -124,7 +126,17 @@ class Main extends Component{
                                 </TouchableOpacity>
 
                             </View>
-                           
+                           normalize
+                        </View> */}
+
+
+                        <View style={styles.partTwo}>
+                            <TouchableOpacity style={styles.buttonDashboard} onPress={() => this.onPressDashboard('QrCompoenent') }>
+                                <Text style={{fontSize:normalize(18), color:'#333333', fontFamily:'IRANSans'}}>ابطال بلیط</Text>
+                                <IconBarcode style={{color: '#46ADD8', paddingLeft:30}}  size={40} name='barcode-scan' />
+                                
+                            </TouchableOpacity>
+
                         </View>
 
                       
@@ -148,8 +160,9 @@ const styles = StyleSheet.create({
 
     },
     dashboard: {
-        flex: 2,
+        flex: 1,
         width: '100%',
+       
     },
     menuContainer:{
         flex: 2,
@@ -226,7 +239,27 @@ const styles = StyleSheet.create({
     menuTextStyle: {
         paddingTop:5,
         color:'#555555'
-    }
+    },
+
+    partTwo :{
+        flex:2,  
+        backgroundColor:'#F3F5F9',
+        alignItems:'center', 
+
+        
+    },
+    buttonDashboard:{
+        marginTop:10,
+        backgroundColor:'#fff',
+        flexDirection:'row',
+        width:'95%',
+        height:85,
+        margin:5,
+        borderRadius:5,
+        elevation: 3,
+        justifyContent:'center',
+        alignItems:'center'
+    },
 })
 
 
