@@ -160,7 +160,7 @@ const styles = StyleSheet.create({
 
     },
     dashboard: {
-        flex: 1,
+        flex: 2,
         width: '100%',
        
     },
