@@ -18,6 +18,7 @@ import {
   import colors from '../../styles/colors';
   import LogoComponent from "./logo"; 
   import base from '../../api/baseURL';
+  import PostApi from '../../contoroler/postToApi';
 
 
 
@@ -39,7 +40,14 @@ class Login extends Component {
         const data = {
             "phone":this.state.phone
         } 
-        const res = await this.postData(data,'supplier/auth/sms');
+        // const res = await this.postData(data,'supplier/auth/sms');
+        this.setState({
+            isLoading:true
+        })
+        const res = await PostApi(data,'supplier/auth/sms');
+        this.setState({
+            isLoading:false
+        })
 
         if(this.state.phone)
         this.props.navigation.navigate('Activity',{ phone: this.state.phone } ); 

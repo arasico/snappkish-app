@@ -40,9 +40,9 @@ class TimerComponent extends Component {
                     <View style={styles.timerClock}><Text style={styles.timerNumber} >{this.state.secend} ثانیه </Text></View>
                 </View>
                 {/* validation error text box */}
-                <View style={styles.containerValidation}>
+                {/* <View style={styles.containerValidation}>
                     <Text style={styles.textValidation}>{this.state.error}</Text>
-                </View>
+                </View> */}
 
             </View>
          );
