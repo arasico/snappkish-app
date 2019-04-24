@@ -32,8 +32,9 @@ onPressAcitivity = () => {
 
     render() { 
 
-        const { errors, isLoading } = this.state
-        const phoneNumber ="0912 213 1425";
+        const { errors, isLoading } = this.state 
+        const phoneNumber = this.props.navigation.getParam('phone', 'NO-Phone number');
+
 
         return ( 
          <KeyboardAvoidingView
