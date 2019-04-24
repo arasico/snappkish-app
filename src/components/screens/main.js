@@ -137,7 +137,7 @@ class Main extends Component{
                                 <IconBarcode style={{color: '#46ADD8', paddingLeft:30}}  size={40} name='barcode-scan' />
                             </TouchableOpacity>
 
-                            <TouchableOpacity style={styles.buttonDashboard} onPress={() => this.onPressDashboard('QrCompoenent') }>
+                            <TouchableOpacity style={styles.buttonDashboard} onPress={() => this.onPressDashboard('KeyPadComponent') }>
                                 <Text style={{fontSize:normalize(18), color:'#333333', fontFamily:'IRANSans'}}>ابطال بلیط</Text>
                                 <IconIonic style={{color: '#46ADD8', paddingLeft:30}}  size={40} name='md-keypad' />
                             </TouchableOpacity>

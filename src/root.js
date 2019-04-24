@@ -34,6 +34,7 @@ import PaymentScreen from './components/proComponent/payment';
 
 import ProductScreen from './components/screens/product';
 import QrCompoenentScreen from './components/screens/qrCompoen';
+import KeyPadComponentScreen from './components/screens/keypad';
 import TicketComponnetScreen from './components/screens/ticket';
 
 
@@ -141,11 +142,12 @@ const MainStack = createStackNavigator({
         screen : QrCompoenentScreen
     },
     TicketComponnet : {
-        screen : TicketComponnetScreen,
-        headerMode: 'none' ,
-        navigationOptions: {
-            headerVisible: false,
-        }
+        screen : TicketComponnetScreen
+     
+    },
+    KeyPadComponent : {
+        screen : KeyPadComponentScreen
+     
     }
 
 },

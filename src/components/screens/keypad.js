@@ -57,30 +57,7 @@ class  KeyPadComponent extends Component {
  
         return ( 
             <View style={styles.container}>
-                <View style={styles.lineBarcode}></View>
-                <View style={styles.barcodeBox}></View>
-
-                <QRCodeScanner 
-                    showMarker={false}
-                    fadeIn={true}
-                    reactivate={true}
-                    onRead={this.onSuccess.bind(this)}
-                    isAuthorized={this.state.isAuthorized}
-                    topContent={
-                    <Text style={styles.centerText}>
-                       Put Your QR Code
-                    </Text>
-                    }
-                    bottomContent={
-                    <TouchableOpacity style={styles.buttonTouchable} onPress={() => this.onPressDashboard('TicketComponnet')}>
-                        {/* <Text style={styles.buttonText}>OK. Got it!</Text> */}
-                        <View style={styles.container} >
-                            <Text  style={styles.buttonTouchable}>{this.state.errordev}</Text>
-                        </View>
-                    </TouchableOpacity>
-
-                    }
-                />
+             
 
             </View>
          );
@@ -96,52 +73,7 @@ const styles = StyleSheet.create({
         alignItems:'center',
         backgroundColor: '#fff',
 
-    },
-    centerText: { 
-      fontSize: 18,
-      padding: 10, 
-      borderColor: '#fff',
-      textAlign: 'center',
-    },
-    textBold: {
-      fontWeight: '500',
-      color: '#000',
-      borderRadius: 4,
-      borderWidth: 5,
-      borderColor: '#fff',
-    },
-    buttonText: {
-      fontSize: 21,
-      color: 'rgb(0,122,255)', 
-    },
-    buttonTouchable: {
-      padding: 16, 
-   
-    },
-    lineBarcode :{
-        position:'absolute',
-        zIndex:999, 
-        borderWidth: 2,
-        borderColor: 'rgba(197, 20, 20, 0.45098039215686275)',
-        width: '90%',
-        top:'50%', 
-        alignItems: 'center',
-
-
-    },
-    barcodeBox:{
-        width:300,
-        height: 200, 
-        position:'absolute',
-        zIndex:998, 
-        top:'33%',
-        borderRadius: 4,
-        borderWidth: 10,
-        borderColor: '#fff',
-      
-
-
-    }
+    }, 
   });
  
 export default  KeyPadComponent;
