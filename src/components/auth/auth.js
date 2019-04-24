@@ -11,6 +11,10 @@ import {
     ActivityIndicator,
 
   } from 'react-native';
+
+import Token from '../../api/token';
+
+
   import Button from '../touchable/button';
   import Icon from 'react-native-vector-icons/FontAwesome';
 
@@ -30,6 +34,9 @@ class Auth extends Component{
         isLoading: false,
       }
   
+      componentWillMount(){
+        this.getToken()
+      }
 
       loginPage = async () => {
        
@@ -37,6 +44,12 @@ class Auth extends Component{
         this.setState({ isLoading: true })
         this.props.navigation.navigate('Login');
       
+      }
+
+      getToken = async() => {
+        // let Token = await AsyncStorage.getItem('authorization_snapkish');
+          if(Token !== '' )
+          this.props.navigation.navigate('Main');
       }
 
     render(){

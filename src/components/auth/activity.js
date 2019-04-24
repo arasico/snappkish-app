@@ -50,18 +50,23 @@ class Activity extends Component {
           {
               this.setState({
                 errors : res.error,
-                isLoading: res.isLoading
+                
               })
           }
+          this.setState({ 
+            isLoading: false
+          })
            if(res.status === 200)
+           {
             this.setToken(res.data.token)
-          //   this.props.navigation.navigate('Main');
+            this.props.navigation.navigate('Main');
+           }
     }
 
     setToken = (token) => {
       console.log(token)
       if(token !=='')
-      AsyncStorage.setItem('authorizationSnapkish', '000');
+      AsyncStorage.setItem('authorization_snapkish', token);
       console.log(`Token is setted! --> ${token}`)
     }
 
