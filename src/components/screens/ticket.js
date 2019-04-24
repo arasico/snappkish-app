@@ -7,6 +7,14 @@ import SearchInput from '../../components/textgroup/search-input';
 import normalize from '../../styles/normalizeText';
 
 
+//
+// Apit Controler
+//
+
+import PostAPI from '../../contoroler/postToApi';
+
+
+
 
  
 
@@ -43,6 +51,10 @@ class  TicketComponnet extends Component {
       }
  
 
+      componentWillMount = async()  => {
+        const res = await PostAPI('00000007', 'supplier/ticket')
+        console.log(res)
+      }
 
       _callBack() { 
         this.props.navigation.goBack();
@@ -51,6 +63,8 @@ class  TicketComponnet extends Component {
     onPressDashboard  (val) {
         this.props.navigation.navigate(val);
       }
+
+
    
 
     render() { 

@@ -6,24 +6,23 @@ import Token from '../api/token';
 
 
 
-function postApi(data,key){
+function getApi(key){
 
     console.log("Api post called!")
 
     const url =  base.baseURL + key;
 
     return fetch(url, {
-        method: "POST", 
+        method: "GET", 
         cache: "no-cache",  
         headers: {
             "Content-Type": "application/json",
             "Accept": "application/json",
             "agent" : "web" ,
-            "Authorization" : Token
+            "token" : Token 
         },
         redirect: "follow", 
-        referrer: "no-referrer", 
-        body: JSON.stringify(data), 
+        referrer: "no-referrer",  
     })
     .then(response => {
       const statusCode = response.status
@@ -43,7 +42,7 @@ function postApi(data,key){
  
 
 
-export default postApi;
+export default getApi;
 
 
 
