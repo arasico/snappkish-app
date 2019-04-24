@@ -52,7 +52,7 @@ class  TicketComponnet extends Component {
  
 
       componentWillMount = async()  => {
-        const res = await PostAPI('00000007', 'supplier/ticket')
+        const res = await PostAPI('00000008', 'supplier/ticket')
         console.log(res)
       }
 
