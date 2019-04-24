@@ -60,19 +60,28 @@ class  KeyPadComponent extends Component {
             <View style={styles.container}>
                 <View style={styles.cards}>
 
-                    <Text>Example</Text>
-                    <TextInput
-                       
-                        value=''
-                        placeholder='کد بلیط'
-                        keyboardType='keyboard'
-                        placeholderTextColor="rgba(35, 36, 42, 0.3)"
-                        // onChangeText={onChangeText}
-                        // onChange={onChange}
-                   
-                        underlineColorAndroid="transparent"
-                        autoCapitalize="none"
-                        />
+                    <Text>کد بلیط</Text>
+                        <View style={{flexDirection:'row'}}>
+                            <View style={{flex:1, backgroundColor:'red'}}></View>
+                            <View style={{flex:5}}>
+                                <TextInput
+                                    
+                                    value=''
+                                    style={styles.textInputStyle}
+                                    placeholder='_  _  _  _  _  _  _'
+                                    keyboardType='keyboard'
+                                    placeholderTextColor="rgba(35, 36, 42, 0.3)"
+                                    // onChangeText={onChangeText}
+                                    // onChange={onChange}
+                                
+                                    underlineColorAndroid="transparent"
+                                    autoCapitalize="none"
+                                />                    
+                            </View>
+                            <View style={{flex:1,       alignItems:'center', justifyContent:'center' , borderLeftWidth:1, borderLeftColor:'#f1f1f1'}}>
+                                <Text style={styles.textStyle}>A</Text>
+                            </View>
+                        </View>
                 </View>
 
             </View>
@@ -96,9 +105,22 @@ const styles = StyleSheet.create({
         backgroundColor:'#fff',
         elevation: 3 ,
         borderRadius: 3 , 
-        padding: 5
+        padding: 5,
+       
 
     },
+    textStyle :{
+        fontFamily:'IRANSans',
+        fontSize: normalize(20),
+        textAlign: 'center',
+        alignItems:'center',
+        justifyContent:'center',
+
+    },
+    textInputStyle: {
+        textAlign:'center',
+        fontSize:normalize(20)
+    }
   });
  
 export default  KeyPadComponent;
