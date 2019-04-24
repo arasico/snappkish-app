@@ -26,6 +26,7 @@ import IconBarcode from 'react-native-vector-icons/MaterialCommunityIcons'
 import IconTicket from 'react-native-vector-icons/FontAwesome5'
 import IconChart from 'react-native-vector-icons/FontAwesome'
 import IconCancel from 'react-native-vector-icons/MaterialCommunityIcons'
+import IconIonic from 'react-native-vector-icons/Ionicons'
 
 
 
@@ -134,7 +135,11 @@ class Main extends Component{
                             <TouchableOpacity style={styles.buttonDashboard} onPress={() => this.onPressDashboard('QrCompoenent') }>
                                 <Text style={{fontSize:normalize(18), color:'#333333', fontFamily:'IRANSans'}}>ابطال بلیط</Text>
                                 <IconBarcode style={{color: '#46ADD8', paddingLeft:30}}  size={40} name='barcode-scan' />
-                                
+                            </TouchableOpacity>
+
+                            <TouchableOpacity style={styles.buttonDashboard} onPress={() => this.onPressDashboard('KeyPadComponent') }>
+                                <Text style={{fontSize:normalize(18), color:'#333333', fontFamily:'IRANSans'}}>ابطال بلیط</Text>
+                                <IconIonic style={{color: '#46ADD8', paddingLeft:30}}  size={40} name='md-keypad' />
                             </TouchableOpacity>
 
                         </View>
@@ -160,7 +165,7 @@ const styles = StyleSheet.create({
 
     },
     dashboard: {
-        flex: 1,
+        flex: 2,
         width: '100%',
        
     },

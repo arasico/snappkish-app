@@ -34,6 +34,8 @@ import PaymentScreen from './components/proComponent/payment';
 
 import ProductScreen from './components/screens/product';
 import QrCompoenentScreen from './components/screens/qrCompoen';
+import KeyPadComponentScreen from './components/screens/keypad';
+import TicketComponnetScreen from './components/screens/ticket';
 
 
 import TestScreen from './test';
@@ -84,8 +86,6 @@ const AuthLoadingScreen = StackNavigator({
     Activity : {
         screen : ActivityScreen
     },
-
-
 
     
     Test : {
@@ -140,6 +140,14 @@ const MainStack = createStackNavigator({
     },
     QrCompoenent : {
         screen : QrCompoenentScreen
+    },
+    TicketComponnet : {
+        screen : TicketComponnetScreen
+     
+    },
+    KeyPadComponent : {
+        screen : KeyPadComponentScreen
+     
     }
 
 },
