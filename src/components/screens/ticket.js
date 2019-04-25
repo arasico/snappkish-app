@@ -13,6 +13,7 @@ import {AsyncStorage} from 'react-native';
 //
 
 import PostAPI from '../../contoroler/postToApi';
+import TimeToDate from '../common/times/timespanToDate';
 
 
 
@@ -50,16 +51,18 @@ class  TicketComponnet extends Component {
 
 
     static navigationOptions = {
-        header: null, 
+        header: null,  
         
       }
  
 
       componentWillMount = async()  => {
         const Token = await AsyncStorage.getItem('AUTHORIZATION');
+        const ticketn = this.props.navigation.getParam('ticketNumber', 'NO-ID');
+         
 
           const data = {
-              'ticketNumber' : '00000008'
+              'ticketNumber' : ticketn
           }
         const res = await PostAPI(data, 'supplier/ticket', Token)
 
@@ -84,6 +87,11 @@ class  TicketComponnet extends Component {
 
     onPressDashboard  (val) {
         this.props.navigation.navigate(val);
+      }   
+      
+      _cancelTicket  (key) {
+         console.log(key)
+
       }
 
 
@@ -131,7 +139,7 @@ class  TicketComponnet extends Component {
                                 <TouchableOpacity style={styles.buttonContainer}>
                                     <IocnFontAwesome5 style={{color: '#46ADD8'}}  size={normalize(15)} name='calendar-alt' />
                                     <Text style={styles.buttonTittle}> تاریخ</Text>
-                                    <Text style={styles.buttonTittleBold}>{this.state.startDate}</Text>
+                                    <Text style={styles.buttonTittleBold}>{TimeToDate(this.state.startDate)}</Text>
                                 </TouchableOpacity>  
                                 <TouchableOpacity style={styles.buttonContainer}>
                                     <IocnFontAwesome5 style={{color: '#46ADD8'}}  size={normalize(15)} name='ticket-alt' />
@@ -168,7 +176,7 @@ class  TicketComponnet extends Component {
 
                         </View>
                         <View style={styles.contentContainer}>
-                            <TouchableOpacity style={styles.btnSubmit} onPress={() => this.onPressDashboard('QrCompoenent') } >
+                            <TouchableOpacity style={styles.btnSubmit} onPress={() => this._cancelTicket(this.props.navigation.getParam('ticketNumber', 'NO-ID')) } >
                                 <Text style={styles.btnSubmitText}> ثبت</Text>
                                 <IconsIonic style={{color: '#ffffff', flex: 1, alignItems:'center', textAlign: 'center',}}  size={normalize(20)} name='ios-arrow-forward' />
                             </TouchableOpacity> 

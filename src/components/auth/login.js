@@ -44,7 +44,7 @@ class Login extends Component {
         this.setState({
             isLoading:true
         })
-        const res = await PostApi(data,'supplier/auth/sms');
+        const res = await PostApi(data,'supplier/auth/sms','');
         console.log(res)
         this.setState({
             isLoading:false

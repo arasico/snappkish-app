@@ -28,16 +28,18 @@ class  QrCompoenent extends Component {
         super(props);
         this.state = { errordev:'No Number',
         isAuthorized: true,
-        reactivate: false }
+        reactivate: false 
+      }
     }
 
 
 
-    onSuccess(e) {
-        this.setState({
+    onSuccess =async(e) =>  {
+       await this.setState({
             errordev: e.data,
+            ticketNumber: e.data,
             isAuthorized: false,
-            reactivate: true
+            reactivate: false
         })
         this.onPressDashboard('TicketComponnet');
         // Linking
@@ -47,7 +49,8 @@ class  QrCompoenent extends Component {
  
 
       onPressDashboard  (val) {
-        this.props.navigation.navigate(val);
+        this.props.navigation.navigate(val,{ 'ticketNumber': this.state.ticketNumber});
+
       }
 
 

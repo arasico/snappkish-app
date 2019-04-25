@@ -1,12 +1,14 @@
 import PropTypes from 'prop-types';
 import React, {Component} from 'react'; 
 import {NavigationActions} from 'react-navigation';
-import {ScrollView, Text, View, StyleSheet, ImageBackground } from 'react-native';
+import {ScrollView, Text, View, StyleSheet, ImageBackground , TouchableOpacity } from 'react-native';
+
+import AsyncStorage from '@react-native-community/async-storage';
 
 //
 //
 import Icon  from '../../styles/icons'; 
-import colors from '../../styles/colors';
+import colors from '../../styles/colors';  
 
 
 class SideMenu extends Component {
@@ -15,6 +17,19 @@ class SideMenu extends Component {
       routeName: route
     });
     this.props.navigation.dispatch(navigateAction);
+  }
+
+
+  _logOut = async() => {
+  // await AsyncStorage.setItem('AUTHORIZATION', 'null');
+  console.log("Token")
+
+  try {
+    await AsyncStorage.clear('AUTHORIZATION')
+    console.log("Token is null")
+  } catch (e) {
+    console.log(e)
+  }
   }
 
   render () {
@@ -60,12 +75,12 @@ class SideMenu extends Component {
             </View>
 
 
-            <View style={styles.navSectionStyle}>
-              <Text style={styles.navItemStyle} onPress={this.navigateToScreen('AboutFalang')}>
-              درباره ما
+            <TouchableOpacity style={styles.navSectionStyle} onPress={ this._logOut}>
+              <Text style={styles.navItemStyle} >
+              خروج
               </Text>
               <Icon.Ionicons name="ios-information-circle-outline" size={22} style={styles.iconNav} color={colors.red} />
-            </View>
+            </TouchableOpacity>
 
 
           </View>

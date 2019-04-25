@@ -53,7 +53,7 @@ class Auth extends Component{
 
           console.log(Token)
 
-          if(Token !== '' && Token !== null){
+          if(Token !== null){
             console.log(Token)
             this.props.navigation.navigate('Main');
           }
