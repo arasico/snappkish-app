@@ -68,9 +68,11 @@ class  KeyPadComponent extends Component {
 
                    
                         <View style={{flexDirection:'row' }}>
-                            <View style={{flex:1,  alignItems:'center', justifyContent:'center'}}>
-                                <IconsIonic name="ios-close-circle-outline" size={normalize(35)} color='#f1f1f1' />
-                            </View>
+
+                            <TouchableOpacity style={{flex:1,  alignItems:'center', justifyContent:'center'}}>
+                                <IconsIonic name="ios-close-circle-outline" size={normalize(35)} color='#eeeddd' />
+                            </TouchableOpacity>
+
                             <View style={{flex:5}}>
                                 <TextInput
                                      
@@ -160,7 +162,9 @@ const styles = StyleSheet.create({
      },
      txt:{
         fontFamily:'IRANSans',
-        color:colors.red,
+        color:'#333333',
+        fontSize:normalize(18),
+
    
     },
   });
