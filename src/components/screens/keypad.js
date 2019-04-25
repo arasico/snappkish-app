@@ -19,6 +19,8 @@ import QRCodeScanner from 'react-native-qrcode-scanner';
 //
 import colors from '../../styles/colors'
 import Icon from '../../styles/icons'
+import IconsIonic from 'react-native-vector-icons/Ionicons';
+
 
 
 
@@ -61,11 +63,14 @@ class  KeyPadComponent extends Component {
  
         return ( 
             <View style={styles.container}>
+             <Text style={styles.titlerOfTextBox}>کد بلیط</Text>
                 <View style={styles.cards}>
 
-                    <Text style={styles.titlerOfTextBox}>کد بلیط</Text>
-                        <View style={{flexDirection:'row',  backgroundColor:'yellow' }}>
-                            <View style={{flex:1, backgroundColor:'red'}}></View>
+                   
+                        <View style={{flexDirection:'row' }}>
+                            <View style={{flex:1,  alignItems:'center', justifyContent:'center'}}>
+                                <IconsIonic name="ios-close-circle-outline" size={normalize(35)} color='#f1f1f1' />
+                            </View>
                             <View style={{flex:5}}>
                                 <TextInput
                                      
