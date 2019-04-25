@@ -39,24 +39,11 @@ class  KeyPadComponent extends Component {
 
 
 
-
-    onSuccess(e) {
-        this.setState({
-            errordev: e.data,
-            isAuthorized: false,
-            reactivate: true
-        })
-        this.onPressDashboard('TicketComponnet');
-        // Linking
-        //   .openURL(e.data)
-        //   .catch(err => console.error('An error occured', err));
-      }
  
+    onPressDashboard (val) {
+        this.props.navigation.navigate(val,{ 'ticketNumber': this.state.ticketNumber}); //TODO deleet later 0000008
 
-      onPressDashboard  (val) {
-        this.props.navigation.navigate(val);
       }
-
 
 
     render() { 
@@ -94,7 +81,7 @@ class  KeyPadComponent extends Component {
                         </View>
                 </View>
                 <View style={styles.cards}>
-                    <TouchableOpacity style={styles.buttonContainer} onPress={this.onPressSending}>
+                    <TouchableOpacity style={styles.buttonContainer} onPress={this.onPressDashboard}>
                             <View >
                                 <View >
                                     {this.state.isLoading ? (
@@ -129,7 +116,8 @@ const styles = StyleSheet.create({
         elevation: 3 ,
         borderRadius: 3 , 
         padding: 5,
-        marginBottom: 10
+        marginBottom: 10,
+        alignItems:'center'
        
 
     },
@@ -153,12 +141,12 @@ const styles = StyleSheet.create({
     },
     buttonContainer:{
         flexDirection: 'row',
-        backgroundColor: '#ededed',
-        height:60,
+        backgroundColor: '#46ADD8',
+        height:45,
         width:'100%',
         borderRadius: 50,
         justifyContent: 'center', 
-        alignItems:'center'
+        alignItems:'center', 
      },
      txt:{
         fontFamily:'IRANSans',
