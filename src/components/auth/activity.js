@@ -9,8 +9,12 @@ import {
     TextInput,
     Text, 
     ActivityIndicator,
-
+      
   } from 'react-native';
+  import AsyncStorage from '@react-native-community/async-storage';
+
+ 
+
   import Icon from 'react-native-vector-icons/FontAwesome';
   import normalize from '../../styles/normalizeText';
   import Button from '../touchable/button';
@@ -18,22 +22,59 @@ import {
   import colors from '../../styles/colors';
 
 import TimerClock from './timerComponent';
-
+import PostApi from '../../contoroler/postToApi';  
 class Activity extends Component {
     constructor(props) {
         super(props);
-        this.state = {  }
+        this.state = { 
+          errors:'',
+          activecode:'',
+       }
     }
 
 
-onPressAcitivity = () => {
-    this.props.navigation.navigate('Main');
-}
+    onPressAcitivity = async() => {
+        this.setState({
+          isLoading: true
+        })
+        const phone = this.props.navigation.getParam('phone', 'NO-Phone number')
+        
+          const data = {
+            "phone":phone,
+            "code": this.state.activecode
+          } 
+          const res = await PostApi(data,'supplier/auth/verify');
+
+          console.log(res)
+          if(res.status !== 200)
+          {
+              this.setState({
+                errors : res.error,
+                
+              })
+          }
+          this.setState({ 
+            isLoading: false
+          })
+           if(res.status === 200)
+           {
+            this.setToken(res.data.token)
+            this.props.navigation.navigate('Main');
+           }
+    }
+
+    setToken = (token) => {
+      console.log(token)
+      if(token !=='')
+      AsyncStorage.setItem('AUTHORIZATION', token);
+      console.log(`Token is setted! --> ${token}`)
+    }
 
     render() { 
 
-        const { errors, isLoading } = this.state
-        const phoneNumber ="0912 213 1425";
+        const { errors, isLoading } = this.state 
+        const phoneNumber = this.props.navigation.getParam('phone', 'NO-Phone number');
+
 
         return ( 
          <KeyboardAvoidingView
@@ -58,11 +99,12 @@ onPressAcitivity = () => {
                         
                                 <View >
                                     <TextGroup 
-                                    label=" کد فعال سازی"
-                                    placeholder="-  -  -  -"
-                                    style={{textAlign:'center', letterSpacing: 10 }}
-                                    maxLength={4}
-                                    keyboardType={'numeric'}
+                                      label=" کد فعال سازی"
+                                      placeholder="-  -  -  -"
+                                      style={{textAlign:'center', letterSpacing: 20, color:'#333' }}
+                                      maxLength={4}
+                                      keyboardType={'numeric'}
+                                      onChangeText={(activecode) => this.setState({activecode})}
                                     />
                                 </View>
                                 <Text style={styles.textActivity}>در صورتی که کد فعال سازی خود را اشتباه وارد نموده اید، بر روی ارسال مجدد کلیک کنید</Text>
@@ -71,6 +113,10 @@ onPressAcitivity = () => {
 
                                             <TimerClock />
 
+                                            {this.state.errors.length >2 ? 
+                                                <View style={styles.containerValidation}>
+                                                  <Text style={styles.textValidation}>{this.state.errors}</Text>
+                                              </View> : <Text></Text>}
                                         </View>  
 
                                 </View>
@@ -80,17 +126,15 @@ onPressAcitivity = () => {
                                         <View style={styles.buttonContainer}>
                                             <Button onPress={this.onPressAcitivity}>
                                                 <View style={styles.buttonLogin}>
-                                                {isLoading ? (
-                                                    <ActivityIndicator color="white" />
-                                                ) : (
-                                                    <Text style={styles.buttonTextLogin}>فعال کنید!</Text>
-                                                )}
+                                                  {isLoading ? (
+                                                      <ActivityIndicator color="#333" />
+                                                  ) : (
+                                                      <Text style={styles.buttonTextLogin}>فعال کنید!</Text>
+                                                  )}
                                                 </View>
                                             </Button>
                                         </View>  
-
                                 </View>
-
                        </View> 
                 </ImageBackground>
             </KeyboardAvoidingView>
@@ -207,9 +251,20 @@ const styles = StyleSheet.create({
         fontFamily:'IRANSans',
         fontSize: Platform.OS === 'ios' ? normalize(12) : normalize(14),
         color:colors.white,
-
-
-      }
+      },
+      containerValidation:{
+          backgroundColor: colors.themeBackgroundOpacity,
+          padding: 12,
+          borderRadius:30,
+          marginTop: 20,
+  
+  
+      },
+      textValidation:{
+          fontFamily: 'IRANSans',
+          color:colors.white,
+          fontSize: Platform.OS === 'ios' ? normalize(8) : normalize(10),
+      },
 
 
 });

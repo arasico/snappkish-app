@@ -11,10 +11,15 @@ import {
     ActivityIndicator,
 
   } from 'react-native';
-  import Button from '../touchable/button';
-  import Icon from 'react-native-vector-icons/FontAwesome';
 
-import colors from '../../styles/colors';
+// import Token from '../../api/token';
+
+
+import Button from '../touchable/button';
+import Icon from 'react-native-vector-icons/FontAwesome';
+import AsyncStorage from '@react-native-community/async-storage'; 
+
+import colors from '../../styles/colors';   
  
 
  
@@ -30,6 +35,9 @@ class Auth extends Component{
         isLoading: false,
       }
   
+      componentWillMount(){
+        this.getToken()
+      }
 
       loginPage = async () => {
        
@@ -37,6 +45,18 @@ class Auth extends Component{
         this.setState({ isLoading: true })
         this.props.navigation.navigate('Login');
       
+      }
+
+      getToken = async() => {
+        // let Token = await AsyncStorage.getItem('AUTHORIZATION');
+        const Token = await AsyncStorage.getItem('AUTHORIZATION');
+
+          console.log(Token)
+
+          if(Token !== null){
+            console.log(Token)
+            this.props.navigation.navigate('Main');
+          }
       }
 
     render(){

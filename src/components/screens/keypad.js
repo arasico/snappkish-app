@@ -1,5 +1,6 @@
 import React , { Component } from 'react';
-import {View, Text, StyleSheet, TouchableOpacity, KeyboardAvoidingView, Platform , ImageBackground , ScrollView, Linking} from 'react-native';
+import {View, Text, StyleSheet, 
+    TouchableOpacity, KeyboardAvoidingView, TextInput , ImageBackground , ScrollView, Linking} from 'react-native';
 import {H1, H2, HR} from '../../typography'
 import SearchInput from '../../components/textgroup/search-input'; 
 import normalize from '../../styles/normalizeText';
@@ -57,7 +58,31 @@ class  KeyPadComponent extends Component {
  
         return ( 
             <View style={styles.container}>
-             
+                <View style={styles.cards}>
+
+                    <Text>کد بلیط</Text>
+                        <View style={{flexDirection:'row'}}>
+                            <View style={{flex:1, backgroundColor:'red'}}></View>
+                            <View style={{flex:5}}>
+                                <TextInput
+                                    
+                                    value=''
+                                    style={styles.textInputStyle}
+                                    placeholder='_  _  _  _  _  _  _'
+                                    keyboardType='keyboard'
+                                    placeholderTextColor="rgba(35, 36, 42, 0.3)"
+                                    // onChangeText={onChangeText}
+                                    // onChange={onChange}
+                                
+                                    underlineColorAndroid="transparent"
+                                    autoCapitalize="none"
+                                />                    
+                            </View>
+                            <View style={{flex:1,       alignItems:'center', justifyContent:'center' , borderLeftWidth:1, borderLeftColor:'#f1f1f1'}}>
+                                <Text style={styles.textStyle}>A</Text>
+                            </View>
+                        </View>
+                </View>
 
             </View>
          );
@@ -71,9 +96,31 @@ const styles = StyleSheet.create({
         flex:1,
         justifyContent: 'center',
         alignItems:'center',
-        backgroundColor: '#fff',
+        backgroundColor: '#f5f5f5',
+        padding:5,
 
     }, 
+    cards: {
+        width:'93%',
+        backgroundColor:'#fff',
+        elevation: 3 ,
+        borderRadius: 3 , 
+        padding: 5,
+       
+
+    },
+    textStyle :{
+        fontFamily:'IRANSans',
+        fontSize: normalize(20),
+        textAlign: 'center',
+        alignItems:'center',
+        justifyContent:'center',
+
+    },
+    textInputStyle: {
+        textAlign:'center',
+        fontSize:normalize(20)
+    }
   });
  
 export default  KeyPadComponent;
