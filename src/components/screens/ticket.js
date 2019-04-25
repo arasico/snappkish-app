@@ -6,6 +6,7 @@ import {H1, H2, HR} from '../../typography'
 import SearchInput from '../../components/textgroup/search-input'; 
 import normalize from '../../styles/normalizeText';
 import {AsyncStorage} from 'react-native'; 
+import Sound  from 'react-native-sound';
 
 
 //
@@ -47,15 +48,18 @@ class  TicketComponnet extends Component {
             name:''
         }
          
+        this.SuccessSound= this.SuccessSound.bind(this)
     }
 
 
     static navigationOptions = {
         header: null, 
-        TokenState: '' 
+        TokenState: '' ,
+        errorHandler:''
         
       }
  
+      
 
       componentWillMount = async()  => {
         const Token = await AsyncStorage.getItem('AUTHORIZATION');
@@ -76,7 +80,7 @@ class  TicketComponnet extends Component {
             price: res.data.price_all, 
             startTime: res.data.products_episode.start_hours, 
             endTime: res.data.products_episode.end_hours, 
-            agancyName: res.data.customer.name, 
+            agancyName: res.data.agency.name, 
             capicatiy: res.data.count, 
         })
         console.log(this.state.data.customer)
@@ -90,24 +94,72 @@ class  TicketComponnet extends Component {
         this.props.navigation.navigate(val);
       }   
       
-      _cancelTicket  (key) {
+      _cancelTicket =async (key) => {
          console.log(key)
          const data = {
              'ticket_id':key
          }
 
-        const res =  PostAPI(data,'supplier/ticket/repeal',this.state.TokenState );
-        console.log(res);
-        this._callBack();
+        const res =  await PostAPI(data,'supplier/ticket/repeal',this.state.TokenState );
+         console.log(res.error)
+
+        if(res.status === 200){
+            this.SuccessSound()
+            this._callBack();  // Close Compoennt
+        }
+        else{
+            this.WarningSound() ;
+            this.setState({
+                errorHandler : res.error
+            })
+
+        }
+      
+       
         
+
 
       }
 
+      SuccessSound()  {
+        const SuccessSound = new Sound('a_success.mp3', Sound.MAIN_BUNDLE, (error) => {
+           
+            if (error) {
+              console.log(error)
+            }
+            SuccessSound.play((success) => {
+                if (!success) {
+                  console.log('Sound did not play')
+                }
+              })
+
+          }) 
+      }
+
+
+      WarningSound()  {
+        const SuccessSound = new Sound('a_error.mp3', Sound.MAIN_BUNDLE, (error) => {
+           
+            if (error) {
+              console.log(error)
+            }
+            SuccessSound.play((success) => {
+                if (!success) {
+                  console.log('Sound did not play')
+                }
+              })
+
+          }) 
+      }
 
    
 
     render() { 
  
+
+   
+
+
         return ( 
             <View style={styles.container}>
                 <View style={styles.header}>
@@ -179,17 +231,22 @@ class  TicketComponnet extends Component {
                                 <TouchableOpacity style={styles.buttonContainer}>
                                     <IocnFontAwesome5 style={{color: '#46ADD8'}}  size={normalize(15)} name='user-secret' />
                                     <Text style={styles.buttonTittle}>نام آژانس</Text>
-                                    <Text style={styles.buttonTittleBold}>آژانس وحدت</Text>
+                                    <Text style={styles.buttonTittleBold}> {this.state.agancyName}</Text>
                                 </TouchableOpacity>  
                             </View>
 
                         </View>
                         <View style={styles.contentContainer}>
+                         {this.state.errorHandler?    <View style={styles.errorBox}>
+                                <Text style={styles.errorText}> {this.state.errorHandler}</Text>
+                            </View> :   <View style={styles.contentContainer}>
                             <TouchableOpacity style={styles.btnSubmit} onPress={() => this._cancelTicket(this.props.navigation.getParam('ticketNumber', 'NO-ID')) } >
                                 <Text style={styles.btnSubmitText}> ثبت</Text>
                                 <IconsIonic style={{color: '#ffffff', flex: 1, alignItems:'center', textAlign: 'center',}}  size={normalize(20)} name='ios-arrow-forward' />
                             </TouchableOpacity> 
+                        </View>}
                         </View>
+                      
                     </View>
                 </View>
 
@@ -303,6 +360,19 @@ const styles = StyleSheet.create({
         alignItems:'center',
         justifyContent:'center',
         textAlign: 'center', 
+
+    },
+    errorBox :{
+        backgroundColor:'#EC7063',
+        width:'100%',
+        padding:10,
+        borderRadius:10
+    },
+    errorText :{
+        fontFamily:'IRANSans',
+        color:'#333333',
+        fontSize:normalize(16),
+        textAlign:'center',
 
     }
 

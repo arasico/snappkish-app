@@ -170,9 +170,7 @@ const styles = StyleSheet.create({
       txt:{
       fontFamily:'IRANSans',
       color:colors.red,
-
-     
-
+ 
       },
      buttonContainer:{
         flexDirection: 'row',

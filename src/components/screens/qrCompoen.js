@@ -26,7 +26,8 @@ import Icon from '../../styles/icons'
 class  QrCompoenent extends Component {
     constructor(props) {
         super(props);
-        this.state = { errordev:'No Number',
+        this.state = { 
+        errordev:'No Number',
         isAuthorized: true,
         reactivate: false 
       }
@@ -49,7 +50,7 @@ class  QrCompoenent extends Component {
  
 
       onPressDashboard  (val) {
-        this.props.navigation.navigate(val,{ 'ticketNumber': this.state.ticketNumber || '00000008'}); //TODO deleet later 0000008
+        this.props.navigation.navigate(val,{ 'ticketNumber': this.state.ticketNumber}); //TODO deleet later 0000008
 
       }
 

@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React, {Component} from 'react'; 
 import {NavigationActions} from 'react-navigation';
-import {ScrollView, Text, View, StyleSheet, ImageBackground , TouchableOpacity } from 'react-native';
+import {ScrollView, Text, View, StyleSheet, ImageBackground , TouchableOpacity, BackHandler } from 'react-native';
 
 import AsyncStorage from '@react-native-community/async-storage';
 
@@ -20,23 +20,27 @@ class SideMenu extends Component {
   }
 
 
+  //
+  // Clear TOken
+  //
   _logOut = async() => {
   // await AsyncStorage.setItem('AUTHORIZATION', 'null');
+  // BackAndroid.exitApp()
   console.log("Token")
 
-  try {
-    await AsyncStorage.clear('AUTHORIZATION')
-    console.log("Token is null")
-  } catch (e) {
-    console.log(e)
-  }
+    try {
+      await AsyncStorage.clear('AUTHORIZATION')
+      console.log("Token is null")
+    } catch (e) {
+      console.log(e)
+      } 
   }
 
   render () {
     return (
       <View style={styles.container}>
         <ScrollView>
-          <ImageBackground source={require('../../assets/img/english.jpg')}  blurRadius={1} style={styles.headerContainer}>
+          <ImageBackground source={require('../../assets/img/blue.jpg')}  blurRadius={1} style={styles.headerContainer}>
               <View style={ styles.overImage}>
                 <View  style={styles.imageAvator}>
                     <Icon.Ionicons name="md-person" size={50}  />
@@ -49,37 +53,37 @@ class SideMenu extends Component {
               <Text style={styles.navItemStyle} onPress={this.navigateToScreen('MyProfile')}>
               پروفایل من
               </Text>
-              <Icon.FontAwesome name="user-o" size={22} style={styles.iconNav} color={colors.red} />
+              <Icon.FontAwesome name="user-o" size={22} style={styles.iconNav} color={colors.blue} />
             </View>
 
-            <View style={styles.navSectionStyle}>
+            {/* <View style={styles.navSectionStyle}>
               <Text style={styles.navItemStyle} onPress={this.navigateToScreen('Index')}>
               مشاهده دروس
               </Text>
               <Icon.FontAwesome name="folder-o" size={22} style={styles.iconNav} color={colors.red} />
-            </View>
+            </View> */}
 
-            <View style={styles.navSectionStyle}>
+            {/* <View style={styles.navSectionStyle}>
               <Text style={styles.navItemStyle} onPress={this.navigateToScreen('MyFavorit')}>
               کلمات مورد علاقه من
               </Text>
               <Icon.FontAwesome name="heart-o" size={22} style={styles.iconNav} color={colors.red} />
-            </View>
+            </View> */}
 
 
-            <View style={styles.navSectionStyle}>
+            {/* <View style={styles.navSectionStyle}>
               <Text style={styles.navItemStyle} onPress={this.navigateToScreen('Setting')}>
               تنظیمات برنامه
               </Text>
               <Icon.Ionicons name="ios-settings" size={22} style={styles.iconNav} color={colors.red} />
-            </View>
+            </View> */}
 
 
-            <TouchableOpacity style={styles.navSectionStyle} onPress={ this._logOut}>
+            <TouchableOpacity style={styles.navSectionStyle} onPress={() => BackHandler.exitApp()}>
               <Text style={styles.navItemStyle} >
               خروج
               </Text>
-              <Icon.Ionicons name="ios-information-circle-outline" size={22} style={styles.iconNav} color={colors.red} />
+              <Icon.FontAwesome name="sign-out" size={22} style={styles.iconNav} color={colors.blue} />
             </TouchableOpacity>
 
 
@@ -146,7 +150,7 @@ const styles = StyleSheet.create({
 
       },
       overImage:{
-        backgroundColor: 'rgba(181,49,69,0.9)', 
+        backgroundColor: 'rgba(70,173,216,0.9)', 
         position: 'absolute',
         top: 0,
         right: 0,

@@ -15,6 +15,7 @@
     "react-native-cli": "^2.0.1",
     "react-native-qrcode-scanner": "^1.1.2",
     "react-native-responsive-screen": "^1.2.1",
+    "react-native-sound": "^0.10.12",
     "react-native-splash-screen": "^3.1.1",
     "react-native-vector-icons": "^5.0.0",
     "react-navigation": "^2.12.1"
@@ -33,6 +34,6 @@
   "rnpm": {
     "assets": [
       "./src/assets/fonts"
-    ]
-  }
+    ] 
+  } 
 }

@@ -1,6 +1,6 @@
 import React , { Component } from 'react';
 import {View, Text, StyleSheet, 
-    TouchableOpacity, KeyboardAvoidingView, TextInput , ImageBackground , ScrollView, Linking} from 'react-native';
+    TouchableOpacity, KeyboardAvoidingView, TextInput , ImageBackground , ScrollView, Linking, ActivityIndicator} from 'react-native';
 import {H1, H2, HR} from '../../typography'
 import SearchInput from '../../components/textgroup/search-input'; 
 import normalize from '../../styles/normalizeText';
@@ -13,12 +13,12 @@ import normalize from '../../styles/normalizeText';
 //    
 import QRCodeScanner from 'react-native-qrcode-scanner';
 
-
-
 //
 //
 import colors from '../../styles/colors'
 import Icon from '../../styles/icons'
+import IconsIonic from 'react-native-vector-icons/Ionicons'; 
+
 
 
 
@@ -29,51 +29,55 @@ class  KeyPadComponent extends Component {
         this.state = { 
             errordev:'No Number',
             isAuthorized: true,
-            reactivate: false 
+            reactivate: false ,
+            ticketNumber:''
         }
     }
 
 
 
-    onSuccess(e) {
-        this.setState({
-            errordev: e.data,
-            isAuthorized: false,
-            reactivate: true
-        })
-        this.onPressDashboard('TicketComponnet');
-        // Linking
-        //   .openURL(e.data)
-        //   .catch(err => console.error('An error occured', err));
-      }
+
  
-
-      onPressDashboard  (val) {
-        this.props.navigation.navigate(val);
+    onPressDashboard =(val) =>{
+        console.log(this.state.ticketNumber)
+        this.props.navigation.navigate(val,{ 'ticketNumber': this.state.ticketNumber}); //TODO deleet later 0000008
+        this.setState({
+            ticketNumber:''
+        })
       }
 
+      _clearText = () =>{
+          this.setState({
+              ticketNumber:''
+          })
+      }
 
 
     render() { 
  
         return ( 
             <View style={styles.container}>
+             <Text style={styles.titlerOfTextBox}>کد بلیط</Text>
                 <View style={styles.cards}>
 
-                    <Text>کد بلیط</Text>
-                        <View style={{flexDirection:'row'}}>
-                            <View style={{flex:1, backgroundColor:'red'}}></View>
+                   
+                        <View style={{flexDirection:'row' }}>
+
+                            <TouchableOpacity style={{flex:1,  alignItems:'center', justifyContent:'center'}} onPress={this._clearText}>
+                                <IconsIonic name="ios-close-circle-outline" size={normalize(35)} color='#eeeddd' />
+                            </TouchableOpacity>
+
                             <View style={{flex:5}}>
                                 <TextInput
-                                    
-                                    value=''
+                                     value={this.state.ticketNumber}
                                     style={styles.textInputStyle}
-                                    placeholder='_  _  _  _  _  _  _'
-                                    keyboardType='keyboard'
+                                    placeholder='_  _  _  _  _  _  _  _'
+                                    keyboardType='keyboard' 
                                     placeholderTextColor="rgba(35, 36, 42, 0.3)"
                                     // onChangeText={onChangeText}
                                     // onChange={onChange}
-                                
+                                    onChangeText={(ticketNumber) => this.setState({ticketNumber})}
+
                                     underlineColorAndroid="transparent"
                                     autoCapitalize="none"
                                 />                    
@@ -82,6 +86,19 @@ class  KeyPadComponent extends Component {
                                 <Text style={styles.textStyle}>A</Text>
                             </View>
                         </View>
+                </View>
+                <View style={styles.cards}>
+                    <TouchableOpacity style={styles.buttonContainer} onPress={() => this.onPressDashboard('TicketComponnet')}>
+                            <View >
+                                <View >
+                                    {this.state.isLoading ? (
+                                        <ActivityIndicator color="#333" />
+                                    ) : (
+                                        <Text style={styles.txt}>ارسال</Text>
+                                    )}
+                                </View>
+                            </View>
+                    </TouchableOpacity>
                 </View>
 
             </View>
@@ -106,6 +123,8 @@ const styles = StyleSheet.create({
         elevation: 3 ,
         borderRadius: 3 , 
         padding: 5,
+        marginBottom: 10,
+        alignItems:'center'
        
 
     },
@@ -120,7 +139,29 @@ const styles = StyleSheet.create({
     textInputStyle: {
         textAlign:'center',
         fontSize:normalize(20)
-    }
+    },
+    titlerOfTextBox : {
+        fontFamily:'IRANSans',
+        fontSize:normalize(18),
+        color:'#333333',
+
+    },
+    buttonContainer:{
+        flexDirection: 'row',
+        backgroundColor: '#46ADD8',
+        height:45,
+        width:'100%',
+        borderRadius: 50,
+        justifyContent: 'center', 
+        alignItems:'center', 
+     },
+     txt:{
+        fontFamily:'IRANSans',
+        color:'#333333',
+        fontSize:normalize(18),
+
+   
+    },
   });
  
 export default  KeyPadComponent;
