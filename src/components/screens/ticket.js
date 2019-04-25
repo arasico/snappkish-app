@@ -79,7 +79,7 @@ class  TicketComponnet extends Component {
             price: res.data.price_all, 
             startTime: res.data.products_episode.start_hours, 
             endTime: res.data.products_episode.end_hours, 
-            agancyName: res.data.customer.name, 
+            agancyName: res.data.agency.name, 
             capicatiy: res.data.count, 
         })
         console.log(this.state.data.customer)
@@ -205,7 +205,7 @@ class  TicketComponnet extends Component {
                                 <TouchableOpacity style={styles.buttonContainer}>
                                     <IocnFontAwesome5 style={{color: '#46ADD8'}}  size={normalize(15)} name='user-secret' />
                                     <Text style={styles.buttonTittle}>نام آژانس</Text>
-                                    <Text style={styles.buttonTittleBold}>آژانس وحدت</Text>
+                                    <Text style={styles.buttonTittleBold}> {this.state.agancyName}</Text>
                                 </TouchableOpacity>  
                             </View>
 

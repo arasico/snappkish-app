@@ -26,7 +26,8 @@ import Icon from '../../styles/icons'
 class  QrCompoenent extends Component {
     constructor(props) {
         super(props);
-        this.state = { errordev:'No Number',
+        this.state = { 
+        errordev:'No Number',
         isAuthorized: true,
         reactivate: false 
       }

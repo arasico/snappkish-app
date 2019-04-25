@@ -13,13 +13,11 @@ import normalize from '../../styles/normalizeText';
 //    
 import QRCodeScanner from 'react-native-qrcode-scanner';
 
-
-
 //
 //
 import colors from '../../styles/colors'
 import Icon from '../../styles/icons'
-import IconsIonic from 'react-native-vector-icons/Ionicons';
+import IconsIonic from 'react-native-vector-icons/Ionicons'; 
 
 
 
@@ -41,8 +39,15 @@ class  KeyPadComponent extends Component {
 
  
     onPressDashboard (val) {
+        console.log(this.state.ticketNumber)
         this.props.navigation.navigate(val,{ 'ticketNumber': this.state.ticketNumber}); //TODO deleet later 0000008
 
+      }
+
+      _clearText = () =>{
+          this.setState({
+              ticketNumber:''
+          })
       }
 
 
@@ -56,13 +61,13 @@ class  KeyPadComponent extends Component {
                    
                         <View style={{flexDirection:'row' }}>
 
-                            <TouchableOpacity style={{flex:1,  alignItems:'center', justifyContent:'center'}}>
+                            <TouchableOpacity style={{flex:1,  alignItems:'center', justifyContent:'center'}} onPress={this._clearText}>
                                 <IconsIonic name="ios-close-circle-outline" size={normalize(35)} color='#eeeddd' />
                             </TouchableOpacity>
 
                             <View style={{flex:5}}>
                                 <TextInput
-                                     
+                                     value={this.state.ticketNumber}
                                     style={styles.textInputStyle}
                                     placeholder='_  _  _  _  _  _  _  _'
                                     keyboardType='keyboard' 
@@ -81,7 +86,7 @@ class  KeyPadComponent extends Component {
                         </View>
                 </View>
                 <View style={styles.cards}>
-                    <TouchableOpacity style={styles.buttonContainer} onPress={this.onPressDashboard}>
+                    <TouchableOpacity style={styles.buttonContainer} onPress={() => this.onPressDashboard('TicketComponnet')}>
                             <View >
                                 <View >
                                     {this.state.isLoading ? (
