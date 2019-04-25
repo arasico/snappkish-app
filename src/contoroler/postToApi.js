@@ -1,14 +1,23 @@
 
 import base from '../api/baseURL';
-import Token from '../api/token';
+// import Token from '../api/token';
 
 
+getToken =async() => {
+
+  const Token =  await AsyncStorage.getItem('AUTHORIZATION');
+  return Token
+}
 
 
+ function postApi (data,key,Token)    {
 
-function postApi(data,key){
+    console.log('Fetching')
+    
+  // const Token = this.getToken();
+  console.log(Token)
 
-    console.log("Api post called!")
+
 
     const url =  base.baseURL + key;
 
@@ -18,8 +27,9 @@ function postApi(data,key){
         headers: {
             "Content-Type": "application/json",
             "Accept": "application/json",
-            "agent" : "web" ,
-            "Authorization" : Token
+            "agent" : "web",
+            // "Authorization": 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo0MCwiaWQiOjEsInJvbGVOYW1lIjoic3VwcGxpZXIiLCJhZ2VudCI6IndlYiJ9.07xZaiUHb_wlkYpr_j9i1bOC9SAJsfVrUSrywCXO7lU' 
+            "Authorization": Token
         },
         redirect: "follow", 
         referrer: "no-referrer", 

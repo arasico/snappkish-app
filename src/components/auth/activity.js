@@ -66,7 +66,7 @@ class Activity extends Component {
     setToken = (token) => {
       console.log(token)
       if(token !=='')
-      AsyncStorage.setItem('authorization_snapkish', token);
+      AsyncStorage.setItem('AUTHORIZATION', token);
       console.log(`Token is setted! --> ${token}`)
     }
 

@@ -1,3 +1,5 @@
+import React  from 'react';
+
 /*
 
 Get TOken Component from localStorg
@@ -5,18 +7,24 @@ Get TOken Component from localStorg
 */
 
 
-// console.log(localStorage.getItem('authorization'))
-import AsyncStorage from '@react-native-community/async-storage';
-
-function getToken (token) {
-    if(token !== null)
-        return token
-        
-    return null 
-}
-let TokenLocalStorg =  AsyncStorage.getItem('authorization_snapkish');
-
-const Token = getToken(TokenLocalStorg)
+// console.log(localStorage.getItem('AUTHORIZATION'))
+import {AsyncStorage} from 'react-native'; 
 
 
-export default Token;
+
+const Token = _retrieveData = async () => {
+     try {
+      const value = await AsyncStorage.getItem('AUTHORIZATION');
+      if (value !== null) {
+        // We have data!!
+        console.log(value);
+        console.log('Its token');
+        return value
+      }
+    } catch (error) {
+        console.log(error);
+    }
+  };
+ 
+
+export default  Token

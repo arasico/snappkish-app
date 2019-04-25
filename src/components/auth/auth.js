@@ -12,13 +12,14 @@ import {
 
   } from 'react-native';
 
-import Token from '../../api/token';
+// import Token from '../../api/token';
 
 
-  import Button from '../touchable/button';
-  import Icon from 'react-native-vector-icons/FontAwesome';
+import Button from '../touchable/button';
+import Icon from 'react-native-vector-icons/FontAwesome';
+import AsyncStorage from '@react-native-community/async-storage'; 
 
-import colors from '../../styles/colors';
+import colors from '../../styles/colors';   
  
 
  
@@ -47,9 +48,15 @@ class Auth extends Component{
       }
 
       getToken = async() => {
-        // let Token = await AsyncStorage.getItem('authorization_snapkish');
-          if(Token !== '' )
-          this.props.navigation.navigate('Main');
+        // let Token = await AsyncStorage.getItem('AUTHORIZATION');
+        const Token = await AsyncStorage.getItem('AUTHORIZATION');
+
+          console.log(Token)
+
+          if(Token !== '' && Token !== null){
+            console.log(Token)
+            this.props.navigation.navigate('Main');
+          }
       }
 
     render(){
