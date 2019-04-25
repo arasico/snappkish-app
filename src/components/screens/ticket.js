@@ -6,6 +6,7 @@ import {H1, H2, HR} from '../../typography'
 import SearchInput from '../../components/textgroup/search-input'; 
 import normalize from '../../styles/normalizeText';
 import {AsyncStorage} from 'react-native'; 
+import Sound  from 'react-native-sound';
 
 
 //
@@ -47,6 +48,7 @@ class  TicketComponnet extends Component {
             name:''
         }
          
+        this.playSound= this.playSound.bind(this)
     }
 
 
@@ -56,6 +58,7 @@ class  TicketComponnet extends Component {
         
       }
  
+      
 
       componentWillMount = async()  => {
         const Token = await AsyncStorage.getItem('AUTHORIZATION');
@@ -98,9 +101,28 @@ class  TicketComponnet extends Component {
 
         const res =  PostAPI(data,'supplier/ticket/repeal',this.state.TokenState );
         console.log(res);
+        this.playSound()
         this._callBack();
         
 
+
+      }
+
+      playSound()  {
+        const SuccessSound = new Sound('a_success.mp3', Sound.MAIN_BUNDLE, (error) => {
+           
+            if (error) {
+              console.log(error)
+            }
+            SuccessSound.play((success) => {
+                if (!success) {
+                  console.log('Sound did not play')
+                }
+              })
+
+          })
+
+      
       }
 
 
@@ -108,6 +130,10 @@ class  TicketComponnet extends Component {
 
     render() { 
  
+
+   
+
+
         return ( 
             <View style={styles.container}>
                 <View style={styles.header}>

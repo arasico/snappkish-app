@@ -49,7 +49,7 @@ class  QrCompoenent extends Component {
  
 
       onPressDashboard  (val) {
-        this.props.navigation.navigate(val,{ 'ticketNumber': this.state.ticketNumber || '00000008'}); //TODO deleet later 0000008
+        this.props.navigation.navigate(val,{ 'ticketNumber': this.state.ticketNumber}); //TODO deleet later 0000008
 
       }
 
