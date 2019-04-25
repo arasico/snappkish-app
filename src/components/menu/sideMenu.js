@@ -79,7 +79,8 @@ class SideMenu extends Component {
             </View> */}
 
 
-            <TouchableOpacity style={styles.navSectionStyle} onPress={() => BackHandler.exitApp()}>
+            {/* <TouchableOpacity style={styles.navSectionStyle} onPress={() => BackHandler.exitApp()}> */}
+            <TouchableOpacity style={styles.navSectionStyle} onPress={ this._logOut}>
               <Text style={styles.navItemStyle} >
               خروج
               </Text>
