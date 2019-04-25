@@ -13,7 +13,7 @@ import {AsyncStorage} from 'react-native';
 //
 
 import PostAPI from '../../contoroler/postToApi';
-import TimeToDate from '../common/times/timespanToDate';
+import TimeToDate from '../common/times/timespanToDate'; 
 
 
 
@@ -51,7 +51,8 @@ class  TicketComponnet extends Component {
 
 
     static navigationOptions = {
-        header: null,  
+        header: null, 
+        TokenState: '' 
         
       }
  
@@ -59,7 +60,7 @@ class  TicketComponnet extends Component {
       componentWillMount = async()  => {
         const Token = await AsyncStorage.getItem('AUTHORIZATION');
         const ticketn = this.props.navigation.getParam('ticketNumber', 'NO-ID');
-         
+         this.setState({TokenState: Token})
 
           const data = {
               'ticketNumber' : ticketn
@@ -91,6 +92,14 @@ class  TicketComponnet extends Component {
       
       _cancelTicket  (key) {
          console.log(key)
+         const data = {
+             'ticket_id':key
+         }
+
+        const res =  PostAPI(data,'supplier/ticket/repeal',this.state.TokenState );
+        console.log(res);
+        this._callBack();
+        
 
       }
 
