@@ -48,13 +48,14 @@ class  TicketComponnet extends Component {
             name:''
         }
          
-        this.playSound= this.playSound.bind(this)
+        this.SuccessSound= this.SuccessSound.bind(this)
     }
 
 
     static navigationOptions = {
         header: null, 
-        TokenState: '' 
+        TokenState: '' ,
+        errorHandler:''
         
       }
  
@@ -93,22 +94,34 @@ class  TicketComponnet extends Component {
         this.props.navigation.navigate(val);
       }   
       
-      _cancelTicket  (key) {
+      _cancelTicket =async (key) => {
          console.log(key)
          const data = {
              'ticket_id':key
          }
 
-        const res =  PostAPI(data,'supplier/ticket/repeal',this.state.TokenState );
-        console.log(res);
-        this.playSound()
-        this._callBack();
+        const res =  await PostAPI(data,'supplier/ticket/repeal',this.state.TokenState );
+         console.log(res.error)
+
+        if(res.status === 200){
+            this.SuccessSound()
+            this._callBack();  // Close Compoennt
+        }
+        else{
+            this.WarningSound() ;
+            this.setState({
+                errorHandler : res.error
+            })
+
+        }
+      
+       
         
 
 
       }
 
-      playSound()  {
+      SuccessSound()  {
         const SuccessSound = new Sound('a_success.mp3', Sound.MAIN_BUNDLE, (error) => {
            
             if (error) {
@@ -120,11 +133,24 @@ class  TicketComponnet extends Component {
                 }
               })
 
-          })
-
-      
+          }) 
       }
 
+
+      WarningSound()  {
+        const SuccessSound = new Sound('a_error.mp3', Sound.MAIN_BUNDLE, (error) => {
+           
+            if (error) {
+              console.log(error)
+            }
+            SuccessSound.play((success) => {
+                if (!success) {
+                  console.log('Sound did not play')
+                }
+              })
+
+          }) 
+      }
 
    
 
@@ -211,11 +237,16 @@ class  TicketComponnet extends Component {
 
                         </View>
                         <View style={styles.contentContainer}>
+                         {this.state.errorHandler?    <View style={styles.errorBox}>
+                                <Text style={styles.errorText}> {this.state.errorHandler}</Text>
+                            </View> :   <View style={styles.contentContainer}>
                             <TouchableOpacity style={styles.btnSubmit} onPress={() => this._cancelTicket(this.props.navigation.getParam('ticketNumber', 'NO-ID')) } >
                                 <Text style={styles.btnSubmitText}> ثبت</Text>
                                 <IconsIonic style={{color: '#ffffff', flex: 1, alignItems:'center', textAlign: 'center',}}  size={normalize(20)} name='ios-arrow-forward' />
                             </TouchableOpacity> 
+                        </View>}
                         </View>
+                      
                     </View>
                 </View>
 
@@ -329,6 +360,19 @@ const styles = StyleSheet.create({
         alignItems:'center',
         justifyContent:'center',
         textAlign: 'center', 
+
+    },
+    errorBox :{
+        backgroundColor:'#EC7063',
+        width:'100%',
+        padding:10,
+        borderRadius:10
+    },
+    errorText :{
+        fontFamily:'IRANSans',
+        color:'#333333',
+        fontSize:normalize(16),
+        textAlign:'center',
 
     }
 

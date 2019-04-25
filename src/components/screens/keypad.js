@@ -38,10 +38,12 @@ class  KeyPadComponent extends Component {
 
 
  
-    onPressDashboard (val) {
+    onPressDashboard =(val) =>{
         console.log(this.state.ticketNumber)
         this.props.navigation.navigate(val,{ 'ticketNumber': this.state.ticketNumber}); //TODO deleet later 0000008
-
+        this.setState({
+            ticketNumber:''
+        })
       }
 
       _clearText = () =>{
