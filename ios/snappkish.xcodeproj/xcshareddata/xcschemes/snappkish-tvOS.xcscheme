@@ -29,9 +29,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "2D02E47A1E0B4A5D006451C7"
-               BuildableName = "snappkish-tvOS.app"
-               BlueprintName = "snappkish-tvOS"
-               ReferencedContainer = "container:snappkish.xcodeproj">
+               BuildableName = "vilaapp-tvOS.app"
+               BlueprintName = "vilaapp-tvOS"
+               ReferencedContainer = "container:vilaapp.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -43,9 +43,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "2D02E48F1E0B4A5D006451C7"
-               BuildableName = "snappkish-tvOSTests.xctest"
-               BlueprintName = "snappkish-tvOSTests"
-               ReferencedContainer = "container:snappkish.xcodeproj">
+               BuildableName = "vilaapp-tvOSTests.xctest"
+               BlueprintName = "vilaapp-tvOSTests"
+               ReferencedContainer = "container:vilaapp.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -61,9 +61,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "2D02E48F1E0B4A5D006451C7"
-               BuildableName = "snappkish-tvOSTests.xctest"
-               BlueprintName = "snappkish-tvOSTests"
-               ReferencedContainer = "container:snappkish.xcodeproj">
+               BuildableName = "vilaapp-tvOSTests.xctest"
+               BlueprintName = "vilaapp-tvOSTests"
+               ReferencedContainer = "container:vilaapp.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -71,9 +71,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "2D02E47A1E0B4A5D006451C7"
-            BuildableName = "snappkish-tvOS.app"
-            BlueprintName = "snappkish-tvOS"
-            ReferencedContainer = "container:snappkish.xcodeproj">
+            BuildableName = "vilaapp-tvOS.app"
+            BlueprintName = "vilaapp-tvOS"
+            ReferencedContainer = "container:vilaapp.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -94,9 +94,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "2D02E47A1E0B4A5D006451C7"
-            BuildableName = "snappkish-tvOS.app"
-            BlueprintName = "snappkish-tvOS"
-            ReferencedContainer = "container:snappkish.xcodeproj">
+            BuildableName = "vilaapp-tvOS.app"
+            BlueprintName = "vilaapp-tvOS"
+            ReferencedContainer = "container:vilaapp.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -113,9 +113,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "2D02E47A1E0B4A5D006451C7"
-            BuildableName = "snappkish-tvOS.app"
-            BlueprintName = "snappkish-tvOS"
-            ReferencedContainer = "container:snappkish.xcodeproj">
+            BuildableName = "vilaapp-tvOS.app"
+            BlueprintName = "vilaapp-tvOS"
+            ReferencedContainer = "container:vilaapp.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

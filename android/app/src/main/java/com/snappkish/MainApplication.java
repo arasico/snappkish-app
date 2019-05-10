@@ -1,4 +1,4 @@
-package com.snappkish;
+package com.vilaapp;
 
 import android.app.Application;
 

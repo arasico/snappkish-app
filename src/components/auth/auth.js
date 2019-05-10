@@ -9,16 +9,17 @@ import {
     TextInput,
     Text, 
     ActivityIndicator,
+    TouchableOpacity
 
   } from 'react-native';
 
 // import Token from '../../api/token';
-
+import LoginBtn from '../touchable/button'
 
 import Button from '../touchable/button';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import AsyncStorage from '@react-native-community/async-storage'; 
-
+import PhoneInput from '../textgroup/phone-input'
 import colors from '../../styles/colors';   
  
 
@@ -64,47 +65,32 @@ class Auth extends Component{
 
     
         return (
-            <KeyboardAvoidingView
-            style={styles.container}
-            behavior="padding"
-            keyboardVerticalOffset={Platform.OS === 'ios' ? 0 : -300}
-          >
-                <ImageBackground source={require('../../assets/img/climb.png')} style={styles.backgroundImage}>
-                    
+            <View style={styles.container}>
 
-                       <View style={styles.maincontainer}>
-                       <View style={styles.logoContainer}>
-                            
-                            <Image
-                                source={require('../../assets/img/logo.png')}
-                                style={styles.logo}
-                            />
-                            
-                        </View>
-
-                        <View style={styles.formContainer}>
+              <View style={styles.up}>
+                <Image
+                    source={require('../../assets/img/logo-red.png')}
+                    style={styles.logo}
+                />
+              </View>
+              <View style={styles.center}>
             
-                                
-
-                                <View style={styles.buttonContainer}>
-                                    <Button onPress={this.loginPage}>
-                                        <View style={styles.buttonLogin}>
-                                        {isLoading ? (
-                                            <ActivityIndicator color="#333333" />
-                                        ) : (
-                                            <Text style={styles.buttonTextLogin}>ورود</Text>
-                                        )}
-                                        </View>
-                                        
-                                    </Button>
-                                    
-                                </View> 
-                        </View>
-
-                       </View>
-                   
-                </ImageBackground>
-            </KeyboardAvoidingView>
+                <PhoneInput  
+                    placeholder="- - - - - - - - - - -"
+                    style={styles.txtInput}
+                    maxLength={30}
+                    keyboardType={'numeric'}
+                    onpress={this.onpress}
+                />
+                 
+              </View>
+              <View style={styles.down}>
+                 <TouchableOpacity style={styles.btnLogin}>
+                    <Text>ورود</Text>
+                 </TouchableOpacity>
+              </View>
+               
+            </View>
            
         );
     }
@@ -117,73 +103,46 @@ const styles = StyleSheet.create({
     container: {
     
         flex:1,
-        justifyContent: 'space-between',
-        alignItems: 'center',
+        // justifyContent: 'space-between',
+        // alignItems: 'center',
+        backgroundColor: '#F6F6F6',
+        flexDirection: 'column'
     
-      },
-    maincontainer:{
-        flex: 1,
-        flexDirection: 'column',
-        justifyContent: 'space-between',
-      },
-    backgroundImage: {
-        width: '100%',
-        height: '100%',
-
-    },
-    transparentBg:{
-        backgroundColor: "transparent",
-        borderColor: "transparent",
-
-    },
-      logoContainer: {
-        marginTop: 30,
-        minHeight: 320,
-        justifyContent: 'center',
-        alignItems: 'center', 
-      },
-      formContainer: {
-        paddingHorizontal: 30,
-        paddingBottom: 200,
-      },
-      logo: {
-        resizeMode: 'contain',
-        height: 80,
-      },
-      buttonContainer:{
-          padding:10,
-          margin: 5,
-      },
-      buttonContainer: { marginTop: 20 },
-      buttonRegister: {
-        height:60,
-        backgroundColor: colors.transparentBg,
-        borderRadius: 30,
-        justifyContent: 'center',
+      }, 
+      up: {
+        flex:3,
+        backgroundColor: '#C92652',
+        borderBottomRightRadius: 700,
         alignItems: 'center',
-        borderColor: colors.white,
-        borderWidth: 2,
-
-      },
-      buttonLogin: {
-        height:60,
-        backgroundColor: colors.white,
-        borderRadius: 30,
         justifyContent: 'center',
-        alignItems: 'center',
-       
 
       },
-      buttonText: {
-        fontSize:20,
-        color: colors.white,
-        fontFamily: 'IRANSans_Medium',
+      center : {
+        flex:1,
+        backgroundColor:'#F6F6F6',
+        padding: 30,
+
       },
-      buttonTextLogin: {
-        fontSize:20,
-        color: colors.black,
-        fontFamily: 'IRANSans',
+      down: {
+        flex:2,
+        backgroundColor:'#C92652',
+        borderTopLeftRadius: 400,
+        padding:30
       },
+      logo:{
+        width:150,
+        height:150
+      },
+
+      btnLogin: {
+        backgroundColor:'blue',
+        justifyContent:'center',
+        alignItems:'center',
+        padding:15,
+        borderRadius: 50,
+        
+
+      }
 
 });
 

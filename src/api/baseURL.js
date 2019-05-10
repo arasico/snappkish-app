@@ -4,7 +4,7 @@
  //
  
 
- const url ='http://snappkish.com:8082' ;
+ const url ='http://vilaapp.com:8082' ;
  const versioan ='v1' ;
  const api ='api' ;
 
